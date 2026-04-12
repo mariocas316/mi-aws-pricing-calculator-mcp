@@ -1,0 +1,17 @@
+{
+  "name": "local-aws-calculator",
+  "version": "1.0.0",
+  "description": "Local AWS Pricing Calculator API — creates estimates on calculator.aws programmatically",
+  "main": "mcp-server.js",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "mcp": "node mcp-server.js",
+    "build": "esbuild mcp-server.js --bundle --platform=node --outfile=dist/mcp-server.js --format=cjs --minify && rm -f dist/aws-calculator.zip && zip dist/aws-calculator.zip mcp-server.js lib/aws-client.js lib/estimate-builder.js lib/ec2.js package.json"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.27.4"
+  }
+}
