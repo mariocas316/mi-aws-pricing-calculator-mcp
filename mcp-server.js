@@ -7,6 +7,68 @@ const EstimateBuilder = require('./lib/estimate-builder');
 
 const estimates = new Map();
 
+const META_KEYS = new Set(['region', 'description']);
+const EC2_KEYS = new Set([
+  'tenancy', 'pricingStrategy', 'utilization', 'selectedOS', 'instanceType',
+  'quantity', 'storageType', 'storageAmount', 'snapshotFrequency', 'dataTransferForEC2',
+]);
+
+function levenshtein(a, b) {
+  const m = a.length, n = b.length;
+  const d = Array.from({ length: m + 1 }, (_, i) => i);
+  for (let j = 1; j <= n; j++) {
+    let prev = d[0];
+    d[0] = j;
+    for (let i = 1; i <= m; i++) {
+      const tmp = d[i];
+      d[i] = a[i - 1] === b[j - 1] ? prev : 1 + Math.min(prev, d[i], d[i - 1]);
+      prev = tmp;
+    }
+  }
+  return d[m];
+}
+
+function suggestMatch(invalid, validIds, max = 3) {
+  const lower = invalid.toLowerCase();
+  return validIds
+    .map(id => ({ id, dist: levenshtein(lower, id.toLowerCase()) }))
+    .filter(m => m.dist <= Math.max(Math.floor(invalid.length * 0.6), 3))
+    .sort((a, b) => a.dist - b.dist)
+    .slice(0, max)
+    .map(m => m.id);
+}
+
+async function validateConfigKeys(serviceKey, config, partition) {
+  if (serviceKey.toLowerCase() === 'ec2enhancement') return null;
+
+  const configKeys = Object.keys(config).filter(k => !META_KEYS.has(k));
+  if (configKeys.length === 0) return null;
+
+  try {
+    const manifest = await loadManifest(partition || 'aws');
+    const svc = findService(manifest, serviceKey);
+    if (!svc) return null; // service not found — will fail later at export
+
+    const def = await fetchServiceDefinition(manifest, svc.key, partition || 'aws');
+    if (!def) return null;
+
+    const validIds = extractInputFields(def).map(f => f.id);
+    const validSet = new Set(validIds);
+    const invalid = configKeys.filter(k => !validSet.has(k));
+    if (invalid.length === 0) return null;
+
+    const lines = invalid.map(k => {
+      const suggestions = suggestMatch(k, validIds);
+      return suggestions.length
+        ? `  "${k}" — did you mean: ${suggestions.map(s => `"${s}"`).join(', ')}?`
+        : `  "${k}" — no close match found`;
+    });
+    return `Invalid field IDs for ${svc.key}:\n${lines.join('\n')}\nUse get_service_fields to discover valid field IDs.`;
+  } catch {
+    return null; // validation is best-effort; don't block on fetch failures
+  }
+}
+
 const server = new McpServer({
   name: 'aws-calculator',
   version: '1.0.0',
@@ -107,6 +169,8 @@ Do NOT use get_service_fields for EC2 — these fields are handled by a custom t
 
 Always include "region" in each service config. Use "description" to label what each service entry represents. IMPORTANT: descriptions and group names must NOT contain <, >, or & characters (AWS rejects them).
 
+Config keys are validated against the service definition. Invalid field IDs will be rejected with suggested corrections. Use get_service_fields first to discover valid field IDs for a service.
+
 For batch mode, pass a JSON array in "services":
 [{"service":"aWSLambda","instance":"Compute","group":"Prod","config":{...}},{"service":"amazonS3Standard","group":"Prod","config":{...}}]`,
   {
@@ -141,6 +205,11 @@ For batch mode, pass a JSON array in "services":
         }
       }
       const key = instance ? `${service}:${instance}` : service;
+      const validationError = await validateConfigKeys(service, config, estimate.partition);
+      if (validationError) {
+        results.push({ error: validationError, service: key });
+        continue;
+      }
       estimate.addService(key, config, { group });
       results.push({ success: true, service: key, group: group || '(ungrouped)' });
     }
