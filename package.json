@@ -7,12 +7,14 @@
   "scripts": {
     "test": "node --test test/*.test.js",
     "mcp": "node mcp-server.js",
-    "build": "esbuild mcp-server.js --bundle --platform=node --outfile=dist/mcp-server.js --format=cjs --minify && rm -f dist/aws-calculator.zip && zip dist/aws-calculator.zip mcp-server.js lib/aws-client.js lib/estimate-builder.js lib/ec2.js package.json"
+    "build": "esbuild mcp-server.js --bundle --platform=node --outfile=dist/mcp-server.js --format=cjs --minify && rimraf dist/aws-calculator.zip && bestzip dist/aws-calculator.zip mcp-server.js lib/aws-client.js lib/estimate-builder.js lib/ec2.js package.json"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0"
   },
   "devDependencies": {
-    "esbuild": "^0.27.4"
+    "bestzip": "^2.2.3",
+    "esbuild": "^0.27.4",
+    "rimraf": "^6.1.3"
   }
 }
