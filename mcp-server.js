@@ -6,6 +6,7 @@ const { StdioServerTransport } = require('@modelcontextprotocol/sdk/server/stdio
 const { z } = require('zod');
 const { PARTITIONS, loadManifest, findService, fetchServiceDefinition, extractInputFields, searchServices } = require('./lib/aws-client');
 const EstimateBuilder = require('./lib/estimate-builder');
+const { calculateEksNodePlan } = require('./lib/eks');
 
 const estimates = new Map();
 
@@ -38,6 +39,32 @@ function suggestMatch(invalid, validIds, max = 3) {
     .sort((a, b) => a.dist - b.dist)
     .slice(0, max)
     .map(m => m.id);
+}
+
+function pickEksServiceKey(manifest) {
+  let best = null;
+  let bestScore = -1;
+
+  for (const [key, svc] of manifest) {
+    if (svc.subType === 'subServiceSelector') continue;
+    if (svc.isActive === 'false') continue;
+
+    const keyLower = key.toLowerCase();
+    const nameLower = (svc.name || '').toLowerCase();
+    let score = 0;
+
+    if (nameLower.includes('elastic kubernetes service')) score += 8;
+    if (nameLower.includes('kubernetes')) score += 4;
+    if (keyLower.includes('kubernetes')) score += 3;
+    if (keyLower.includes('eks')) score += 2;
+
+    if (score > bestScore) {
+      best = key;
+      bestScore = score;
+    }
+  }
+
+  return bestScore > 0 ? best : null;
 }
 
 async function validateConfigKeys(serviceKey, config, partition) {
@@ -75,6 +102,107 @@ const server = new McpServer({
   name: 'aws-calculator',
   version: '1.0.0',
 });
+
+server.tool(
+  'create_eks_estimate',
+  'Create a ready-to-export estimate for an Amazon EKS workload sized to run containers. It auto-calculates EC2 worker node count from container CPU/memory requests and adds an EKS control plane service when available.',
+  {
+    name: z.string().optional().describe('Estimate name (default: "EKS 100 Containers")'),
+    region: z.string().optional().describe('AWS region for EKS and workers (default: "us-east-1")'),
+    partition: z.string().optional().describe('AWS partition (default inferred from region). Valid: aws, aws-iso, aws-iso-b'),
+    container_count: z.number().int().positive().optional().describe('Number of application containers to run (default: 100)'),
+    container_cpu: z.number().positive().optional().describe('Requested vCPU per container (default: 0.25)'),
+    container_memory_gib: z.number().positive().optional().describe('Requested memory GiB per container (default: 0.5)'),
+    headroom_percent: z.number().min(0).max(200).optional().describe('Capacity headroom percentage (default: 20)'),
+    instance_type: z.string().optional().describe('EC2 instance type for worker nodes (default: "m5.xlarge")'),
+    min_nodes: z.number().int().positive().optional().describe('Minimum worker nodes (default: 2)'),
+    az_count: z.number().int().positive().optional().describe('Target AZ count (default: 2)'),
+    include_eks_control_plane: z.boolean().optional().describe('Add Amazon EKS control plane service entry (default: true)'),
+    pricing_strategy: z.string().optional().describe('EC2 pricing strategy for workers. Examples: ondemand, spot, computeSavings1yrNoUpfront (default: ondemand)'),
+    worker_storage_gib: z.number().int().positive().optional().describe('EBS gp3 storage per worker node in GiB (default: 50)'),
+  },
+  async (args) => {
+    const region = args.region || 'us-east-1';
+    const requestedPartition = args.partition;
+    const includeEks = args.include_eks_control_plane !== false;
+    const partition = requestedPartition || (region.startsWith('us-iso-') ? 'aws-iso' : (region.startsWith('us-isob-') ? 'aws-iso-b' : 'aws'));
+
+    if (!PARTITIONS[partition]) {
+      return { content: [{ type: 'text', text: `Unknown partition '${partition}'. Valid partitions: ${Object.keys(PARTITIONS).join(', ')}` }], isError: true };
+    }
+
+    let plan;
+    try {
+      plan = calculateEksNodePlan({
+        containerCount: args.container_count ?? 100,
+        containerCpu: args.container_cpu ?? 0.25,
+        containerMemoryGiB: args.container_memory_gib ?? 0.5,
+        headroomPercent: args.headroom_percent ?? 20,
+        instanceType: args.instance_type || 'm5.xlarge',
+        minNodes: args.min_nodes ?? 2,
+        azCount: args.az_count ?? 2,
+      });
+    } catch (err) {
+      return { content: [{ type: 'text', text: err.message }], isError: true };
+    }
+
+    const estimate = new EstimateBuilder(args.name || `EKS ${args.container_count ?? 100} Containers`, partition);
+
+    estimate.addService('ec2Enhancement:EKSWorkerNodes', {
+      region,
+      description: `EKS worker nodes (${plan.nodeCount} x ${plan.instanceType})`,
+      quantity: String(plan.nodeCount),
+      instanceType: plan.instanceType,
+      selectedOS: 'linux',
+      tenancy: 'shared',
+      pricingStrategy: args.pricing_strategy || 'ondemand',
+      storageType: 'Storage General Purpose gp3 GB Mo',
+      storageAmount: { value: String(args.worker_storage_gib ?? 50), unit: 'gb|NA' },
+      snapshotFrequency: '0',
+    }, { group: 'EKS' });
+
+    let eksServiceAdded = false;
+    let eksServiceKey = null;
+
+    if (includeEks) {
+      const manifest = await loadManifest(partition);
+      eksServiceKey = pickEksServiceKey(manifest);
+      if (eksServiceKey) {
+        estimate.addService(eksServiceKey, {
+          region,
+          description: 'Amazon EKS control plane',
+        }, { group: 'EKS' });
+        eksServiceAdded = true;
+      }
+    }
+
+    estimates.set(estimate.id, estimate);
+
+    return {
+      content: [{
+        type: 'text',
+        text: JSON.stringify({
+          estimate_id: estimate.id,
+          name: estimate.name,
+          summary: {
+            target_containers: args.container_count ?? 100,
+            region,
+            partition,
+            workers: {
+              instance_type: plan.instanceType,
+              node_count: plan.nodeCount,
+              pricing_strategy: args.pricing_strategy || 'ondemand',
+            },
+            eks_control_plane_added: eksServiceAdded,
+            eks_service_key: eksServiceKey,
+            sizing: plan,
+          },
+          next_step: `Call export_estimate with estimate_id \"${estimate.id}\" to generate the calculator.aws URL.`,
+        }, null, 2),
+      }],
+    };
+  }
+);
 
 server.tool(
   'search_services',

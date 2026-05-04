@@ -1,38 +1,40 @@
-# AWS Pricing Calculator MCP Server
+# Servidor MCP de AWS Pricing Calculator
 
-[Model Context Protocol](https://modelcontextprotocol.io) (MCP) server that programmatically creates, reads, updates [AWS Pricing Calculator](https://calculator.aws/#/estimate) estimates through natural language.
+Servidor de [Model Context Protocol](https://modelcontextprotocol.io) (MCP) que crea, lee y actualiza estimaciones de [AWS Pricing Calculator](https://calculator.aws/#/estimate) de forma programatica mediante lenguaje natural.
 
-## Key Features
+Documentacion tecnica completa del proyecto en espanol: [DOCUMENTACION_PROYECTO_ES.md](DOCUMENTACION_PROYECTO_ES.md)
 
-- **Creating Estimates**: Supports all 436+ AWS services via live service definitions from the AWS Calculator CDN
-- **Estimate Management**: Export and modify existing AWS Pricing Calculator estimates (e.g. swap AWS regions)
-- **Batch Import**: Create estimates from Excel/CSV files via LLM-assisted parsing
-- **No AWS Credentials Required**: Works without AWS account access
+## Caracteristicas Principales
 
-## Example
+- **Creacion de Estimaciones**: Soporta los mas de 436 servicios de AWS mediante definiciones en vivo desde el CDN de AWS Calculator
+- **Gestion de Estimaciones**: Exporta y modifica estimaciones existentes de AWS Pricing Calculator (por ejemplo, cambiar regiones de AWS)
+- **Importacion por Lotes**: Crea estimaciones desde archivos Excel/CSV usando parseo asistido por LLM
+- **Sin Credenciales de AWS**: Funciona sin acceso a una cuenta de AWS
+
+## Ejemplo
 
 Prompt:
-> Create an AWS Pricing Calculator estimate for a common Wordpress environment on AWS (Dev, Quality, Production).
+> Crea una estimacion de AWS Pricing Calculator para un entorno comun de Wordpress en AWS (Dev, Quality, Production).
 
-Output:
+Salida:
 ![](example1.png)
 
-## Quick Start
+## Inicio Rapido
 
-Requires [Node.js®](https://nodejs.org/en/download).
+Requiere [Node.js®](https://nodejs.org/en/download).
 
 ```bash
-git clone https://github.com/aws-samples/sample-aws-pricing-calculator-mcp.git
-cd sample-aws-pricing-calculator-mcp
+git clone https://github.com/mariocas316/mi-aws-pricing-calculator-mcp.git
+cd mi-aws-pricing-calculator-mcp
 npm install
 npm run build
 ```
 
-The server communicates over stdio using the MCP protocol — it's designed to be used by MCP-compatible clients (e.g. Claude, Kiro), not called directly via HTTP.
+El servidor se comunica por stdio usando el protocolo MCP; esta disenado para clientes compatibles con MCP (por ejemplo Claude, Kiro), no para ser invocado directamente por HTTP.
 
-### MCP Client Configuration
+### Configuracion del Cliente MCP
 
-Add to your MCP client config (e.g. `~/.kiro/settings/mcp.json`):
+Agrega esto en la configuracion de tu cliente MCP (por ejemplo, `~/.kiro/settings/mcp.json`):
 
 ```json
 {
@@ -45,30 +47,51 @@ Add to your MCP client config (e.g. `~/.kiro/settings/mcp.json`):
 }
 ```
 
-## MCP Tools
+## Herramientas MCP
 
-| Tool | Description |
+| Herramienta | Descripcion |
 |---|---|
-| `search_services` | Search AWS services by name or key. Supports comma-separated queries. |
-| `get_service_fields` | Get input field IDs, types, labels, and valid options for one or more services. |
-| `create_estimate` | Create a new empty estimate. Returns an estimate ID. |
-| `add_service` | Add one or more services to an estimate with config values. Supports batch mode. |
-| `export_estimate` | Export an estimate to calculator.aws and get a shareable URL. |
+| `search_services` | Busca servicios de AWS por nombre o clave. Soporta consultas separadas por comas. |
+| `get_service_fields` | Obtiene IDs de campos de entrada, tipos, etiquetas y opciones validas para uno o mas servicios. |
+| `create_estimate` | Crea una estimacion vacia nueva. Devuelve un ID de estimacion. |
+| `create_eks_estimate` | Crea una estimacion EKS lista para exportar, dimensionada para cargas con contenedores (por ejemplo 100 contenedores), incluyendo sizing de workers EC2. |
+| `add_service` | Agrega uno o mas servicios a una estimacion con valores de configuracion. Soporta modo batch. |
+| `export_estimate` | Exporta una estimacion a calculator.aws y devuelve una URL compartible. |
 
-## Project Structure
+### Ejemplo Rapido: EKS para 100 Contenedores
+
+1. Llama a `create_eks_estimate` con los valores por defecto:
+
+```json
+{
+  "container_count": 100,
+  "region": "us-east-1",
+  "instance_type": "m5.xlarge"
+}
+```
+
+2. Usa el `estimate_id` devuelto en `export_estimate`:
+
+```json
+{
+  "estimate_id": "<returned-id>"
+}
+```
+
+## Estructura del Proyecto
 
 ```
-mcp-server.js                # Entry point — stdio MCP server
+mcp-server.js                # Punto de entrada — servidor MCP por stdio
 lib/
-  aws-client.js              # AWS manifest loading, service definitions, field extraction, save API
-  estimate-builder.js         # Estimate builder with AWS payload generation and export
-  ec2.js                     # EC2 config transformation (agent-friendly -> calculator format)
+  aws-client.js              # Carga del manifest AWS, definiciones de servicio, extraccion de campos, API de guardado
+  estimate-builder.js         # Constructor de estimaciones con generacion de payload AWS y exportacion
+  ec2.js                     # Transformacion de config EC2 (amigable para agentes -> formato calculator)
 test/
-  aws-client.test.js         # Tests for AWS client
-  ec2.test.js                # Tests for EC2 transform
-  estimate-builder.test.js   # Tests for estimate builder
-  integration.test.js        # Integration tests
-  validation.test.js         # Config validation tests
+  aws-client.test.js         # Pruebas del cliente AWS
+  ec2.test.js                # Pruebas de transformacion EC2
+  estimate-builder.test.js   # Pruebas del constructor de estimaciones
+  integration.test.js        # Pruebas de integracion
+  validation.test.js         # Pruebas de validacion de configuracion
 ```
 
 ## Build
@@ -77,15 +100,15 @@ test/
 npm run build
 ```
 
-Produces `dist/mcp-server.js` — a single-file esbuild bundle (minified, CJS, Node platform).
+Genera `dist/mcp-server.js`, un bundle de esbuild en un solo archivo (minificado, CJS, plataforma Node).
 
-## Tests
+## Pruebas
 
 ```bash
 npm test
 ```
 
-## Architecture
+## Arquitectura
 
 ```
 ┌─────────────────┐       stdio        ┌──────────────────────────────────────┐
@@ -104,110 +127,110 @@ npm test
                                        │ CDN          │  │ Save API         │
                                        │              │  │                  │
                                        │ • manifest   │  │ POST /v2/saveAs  │
-                                       │ • service    │  │ → returns        │
-                                       │   definitions│  │   shareable URL  │
+                                       │ • service    │  │ → devuelve       │
+                                       │   definitions│  │   URL compartible│
                                        └──────────────┘  └──────────────────┘
 ```
 
-- The MCP server runs as a **local child process** spawned by the MCP client. It communicates exclusively over stdio — it is not network-accessible.
-- All outbound requests are **HTTPS** to public, unauthenticated AWS CloudFront distributions. No AWS credentials are required or used.
-- Estimate data is held **in memory only** and is lost when the process exits. No data is persisted to disk.
+- El servidor MCP corre como **proceso hijo local** lanzado por el cliente MCP. Se comunica exclusivamente por stdio; no es accesible por red.
+- Todas las solicitudes salientes son por **HTTPS** hacia distribuciones publicas de AWS CloudFront sin autenticacion. No se requieren ni se usan credenciales de AWS.
+- Los datos de la estimacion se mantienen **solo en memoria** y se pierden al terminar el proceso. No se persiste informacion en disco.
 
-## How It Works
+## Como Funciona
 
-### Service Discovery
+### Descubrimiento de Servicios
 
-On first use, the server fetches the AWS Calculator manifest from CloudFront, which contains all 436+ services with their keys, names, and definition URLs. Service definitions are fetched on demand and cached. The `get_service_fields` tool parses these definitions to extract input field IDs, types, labels, and valid options into a flat, usable format.
+En el primer uso, el servidor obtiene el manifest de AWS Calculator desde CloudFront, que contiene mas de 436 servicios con sus claves, nombres y URLs de definicion. Las definiciones se piden bajo demanda y se cachean. La herramienta `get_service_fields` parsea esas definiciones para extraer IDs de campos de entrada, tipos, etiquetas y opciones validas en un formato plano y utilizable.
 
-### Estimate Building
+### Construccion de Estimaciones
 
-`EstimateBuilder` holds services and groups in memory. When you add a service via `add_service`, config is stored as-is using the AWS field IDs. Services can be organized into named groups, and multiple instances of the same service are supported via composite keys (e.g. `aWSLambda:Compute`).
+`EstimateBuilder` mantiene servicios y grupos en memoria. Cuando agregas un servicio con `add_service`, la configuracion se guarda tal cual usando los IDs de campo de AWS. Los servicios se pueden organizar en grupos con nombre y se soportan multiples instancias del mismo servicio mediante claves compuestas (por ejemplo `aWSLambda:Compute`).
 
-### EC2 Handling
+### Manejo de EC2
 
-EC2 uses a custom config transform (`lib/ec2.js`) that converts agent-friendly fields (instance type, OS, pricing strategy) into the `ec2Enhancement` format the calculator expects. This includes support for On-Demand, Savings Plans, Reserved Instances, and Spot pricing.
+EC2 usa una transformacion personalizada (`lib/ec2.js`) que convierte campos amigables para agentes (tipo de instancia, SO, estrategia de precios) al formato `ec2Enhancement` que espera la calculadora. Esto incluye soporte para On-Demand, Savings Plans, Reserved Instances y Spot.
 
-### Partition Support
+### Soporte de Particiones
 
-The server supports three AWS partitions:
-- `aws` — standard commercial regions
+El servidor soporta tres particiones de AWS:
+- `aws` — regiones comerciales estandar
 - `aws-iso` — US ISO East/West
 - `aws-iso-b` — US ISOB East
 
-### Export to calculator.aws
+### Exportacion a calculator.aws
 
-When `export_estimate` is called, the builder:
+Cuando se llama `export_estimate`, el constructor:
 
-1. Resolves each service name against the manifest
-2. Fetches the service definition to get the correct `version`, `serviceCode`, and template ID
-3. Maps config keys to `calculationComponents` in the AWS payload format
-4. POSTs the assembled payload to the AWS Calculator save API
-5. Returns the shareable `calculator.aws` URL
+1. Resuelve el nombre de cada servicio contra el manifest
+2. Obtiene la definicion del servicio para tener `version`, `serviceCode` y el ID de template correctos
+3. Mapea las claves de configuracion a `calculationComponents` en el formato de payload de AWS
+4. Hace POST del payload armado a la Save API de AWS Calculator
+5. Devuelve la URL compartible de `calculator.aws`
 
-AWS recalculates the actual costs when someone opens the link.
+AWS recalcula los costos reales cuando alguien abre el enlace.
 
-## Environment Variables
+## Variables de Entorno
 
-All optional:
+Todas opcionales:
 
-| Variable | Default | Purpose |
+| Variable | Valor por Defecto | Proposito |
 |---|---|---|
-| `AWS_MANIFEST_URL` | CloudFront manifest URL | AWS service catalog |
-| `AWS_SAVE_URL` | CloudFront save URL | Estimate persistence |
+| `AWS_MANIFEST_URL` | URL de manifest en CloudFront | Catalogo de servicios de AWS |
+| `AWS_SAVE_URL` | URL de guardado en CloudFront | Persistencia de estimaciones |
 
-## Known Issues
+## Problemas Conocidos
 
-- The CloudFront save/manifest APIs are undocumented and may change without notice.
-- Callers must use the correct AWS field IDs — discover them via `get_service_fields`.
-- Estimates live in memory and don't persist across restarts.
-- No local cost calculation — pricing is computed by AWS when viewing the shareable link -> Press `Update estimate`.
-- Only https://calculator.aws/ supported for now
+- Las APIs de save/manifest en CloudFront no estan documentadas y pueden cambiar sin previo aviso.
+- Quien llama debe usar los IDs de campo correctos de AWS; puedes descubrirlos con `get_service_fields`.
+- Las estimaciones viven en memoria y no persisten entre reinicios.
+- No hay calculo local de costos; AWS calcula el precio cuando se abre el enlace compartible y se presiona `Update estimate`.
+- Por ahora solo se soporta https://calculator.aws/
 
-## Security
+## Seguridad
 
-This is sample code intended for educational purposes. You should work with your security and legal teams to meet your organizational security, regulatory, and compliance requirements before deployment.
+Este es codigo de ejemplo con fines educativos. Debes trabajar con tus equipos de seguridad y legal para cumplir con los requisitos de seguridad, regulatorios y de cumplimiento de tu organizacion antes de desplegarlo.
 
-### Security Model
+### Modelo de Seguridad
 
-This MCP server is a **local tool provider** — it runs as a child process of an MCP client and is not network-accessible. It has no authentication or authorization layer; access control is the responsibility of the MCP client that spawns it.
+Este servidor MCP es un **proveedor de herramientas local**. Corre como proceso hijo de un cliente MCP y no es accesible por red. No tiene capa de autenticacion ni autorizacion; el control de acceso es responsabilidad del cliente MCP que lo lanza.
 
-The server does not handle AWS credentials, customer data, or PII. It processes only pricing configuration parameters (e.g., region, instance type, request counts) provided by the MCP client.
+El servidor no maneja credenciales de AWS, datos de clientes ni PII. Procesa unicamente parametros de configuracion de precios (por ejemplo, region, tipo de instancia, cantidad de requests) enviados por el cliente MCP.
 
-These are the same public, unauthenticated endpoints used by the [calculator.aws](https://calculator.aws) website. No AWS credentials are transmitted.
+Estos son los mismos endpoints publicos y sin autenticacion que usa el sitio [calculator.aws](https://calculator.aws). No se transmiten credenciales de AWS.
 
-### Input Validation and Sanitization
+### Validacion y Sanitizacion de Entradas
 
-- All MCP tool inputs are validated using [Zod](https://zod.dev/) schemas before processing.
-- User-provided descriptions and group names are sanitized to remove `<`, `>`, and `&` characters before inclusion in API payloads, preventing HTML/XML injection in the calculator frontend.
-- Service configuration keys are validated against AWS service definitions with typo detection (Levenshtein distance), rejecting invalid field IDs before they reach the API.
+- Todas las entradas de herramientas MCP se validan con esquemas de [Zod](https://zod.dev/) antes de procesarlas.
+- Las descripciones y nombres de grupos provistos por el usuario se sanitizan removiendo caracteres `<`, `>` y `&` antes de incluirlos en payloads de API, evitando inyeccion HTML/XML en el frontend de la calculadora.
+- Las claves de configuracion de servicios se validan contra definiciones de servicios AWS con deteccion de typos (distancia de Levenshtein), rechazando IDs invalidos antes de llegar a la API.
 
-### Data Handling
+### Manejo de Datos
 
-- Estimate data is held **in memory only** for the lifetime of the process. No data is written to disk or persisted across restarts.
-- The data consists of pricing configuration (region codes, service parameters, instance types) — not secrets, credentials, or personally identifiable information.
-- Shareable URLs generated by the export contain only an opaque estimate ID. The estimate content is stored by AWS, not by this server.
+- Los datos de la estimacion se mantienen **solo en memoria** durante la vida del proceso. No se escriben en disco ni se persisten entre reinicios.
+- Los datos consisten en configuracion de precios (codigos de region, parametros de servicio, tipos de instancia), no secretos, credenciales ni informacion personal identificable.
+- Las URLs compartibles generadas en la exportacion contienen solo un ID opaco de estimacion. El contenido de la estimacion se guarda en AWS, no en este servidor.
 
-### Reporting Security Issues
+### Reporte de Problemas de Seguridad
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for information on reporting security issues.
+Consulta [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) para informacion sobre como reportar problemas de seguridad.
 
-## AWS MCP Servers Comparison: Pricing & Cost Management
+## Comparacion de Servidores MCP de AWS: Pricing y Cost Management
 
-| | **AWS Pricing Calculator MCP (This)** | **[AWS Billing & Cost Management MCP](https://github.com/awslabs/mcp#-cost--operations)** | **[AWS Pricing MCP](https://github.com/awslabs/mcp#-cost--operations)** |
+| | **AWS Pricing Calculator MCP (Este)** | **[AWS Billing & Cost Management MCP](https://github.com/awslabs/mcp#-cost--operations)** | **[AWS Pricing MCP](https://github.com/awslabs/mcp#-cost--operations)** |
 |---|---|---|---|
-| **Purpose** | Build shareable cost estimates for new workloads | Analyze historical spend & optimize existing costs | Query real-time pricing data from Price List API |
-| **Data Source** | AWS Pricing Calculator (calculator.aws) | Cost Explorer, Cost Optimization Hub, Compute Optimizer, Savings Plans, Budgets, Storage Lens | AWS Price List Bulk API |
-| **Output** | Shareable calculator.aws URL with full estimate | Natural language cost insights, savings recommendations | Raw pricing data, cost reports (markdown/CSV) |
-| **Use Case** | "What will this new architecture cost?" | "Where am I overspending today?" | "What's the per-unit price of X?" |
-| **Scope** | Forward-looking estimates | Historical & current spend | Current catalog pricing |
-| **AWS Credentials** | Not required (uses public calculator API) | Required (reads your billing data) | Required (`pricing:*` permissions) |
+| **Proposito** | Construir estimaciones de costo compartibles para nuevas cargas | Analizar gasto historico y optimizar costos actuales | Consultar precios en tiempo real desde Price List API |
+| **Fuente de Datos** | AWS Pricing Calculator (calculator.aws) | Cost Explorer, Cost Optimization Hub, Compute Optimizer, Savings Plans, Budgets, Storage Lens | AWS Price List Bulk API |
+| **Salida** | URL compartible de calculator.aws con estimacion completa | Insights de costos en lenguaje natural, recomendaciones de ahorro | Datos de precio crudos, reportes de costos (markdown/CSV) |
+| **Caso de Uso** | "Cuanto costara esta arquitectura nueva?" | "En que estoy gastando de mas hoy?" | "Cual es el precio por unidad de X?" |
+| **Alcance** | Estimaciones a futuro | Gasto historico y actual | Catalogo de precios actual |
+| **Credenciales AWS** | No requeridas (usa API publica de calculator) | Requeridas (lee tus datos de facturacion) | Requeridas (permisos `pricing:*`) |
 
-TL;DR: Use the Pricing Calculator MCP to build estimates for proposals, the Billing & Cost Management MCP to analyze/optimize what you're already spending, and the Pricing MCP for granular unit-price lookups and IaC cost analysis.
+Resumen rapido: usa Pricing Calculator MCP para crear estimaciones en propuestas, Billing & Cost Management MCP para analizar y optimizar lo que ya gastas, y Pricing MCP para consultas granulares de precio unitario y analisis de costo para IaC.
 
-## License
+## Licencia
 
-This library is licensed under the MIT-0 License. See the [LICENSE](LICENSE) file.
+Esta libreria esta licenciada bajo MIT-0. Consulta el archivo [LICENSE](LICENSE).
 
-## Disclaimer
+## Descargo de Responsabilidad
 
-Before using an MCP Server, you should consider conducting your own independent assessment to ensure that your use would comply with your own specific security and quality control practices and standards, as well as the laws, rules, and regulations that govern you and your content.
+Antes de usar un servidor MCP, deberias realizar tu propia evaluacion independiente para asegurar que tu uso cumpla con tus practicas y estandares de seguridad y control de calidad, asi como con las leyes, reglas y regulaciones que aplican a ti y a tu contenido.
