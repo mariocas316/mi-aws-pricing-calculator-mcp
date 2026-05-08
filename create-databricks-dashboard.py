@@ -1,0 +1,373 @@
+#!/usr/bin/env python3
+"""
+Comparación de recursos y creación de dashboard JSON para Databricks
+"""
+
+import pandas as pd
+import json
+import os
+from datetime import datetime
+
+OUTPUT_DIR = "databricks-analysis"
+
+def create_dashboard_json():
+    """Crea un JSON estructurado para dashboard/presentación"""
+    
+    dashboard = {
+        "report_metadata": {
+            "title": "Análisis de Costos de Azure Databricks",
+            "date": datetime.now().isoformat(),
+            "period": "Abril 2026",
+            "status": "En Producción",
+            "currency": "USD"
+        },
+        
+        "executive_summary": {
+            "total_cost": 47990.62,
+            "total_records": 36249,
+            "num_environments": 2,
+            "num_workspaces": 3,
+            "num_resource_groups": 6,
+            "currency": "USD",
+            "cost_trend": "Stable (Pre-optimization)",
+            "top_cost_driver": "Premium Serverless SQL DBU (52.1%)"
+        },
+        
+        "cost_by_environment": {
+            "Prod": {
+                "cost": 47957.09,
+                "percentage": 99.93,
+                "records": 36216,
+                "workspaces": ["adbworkspaceprod001", "adbnomoeastus2prod001"]
+            },
+            "QA": {
+                "cost": 33.53,
+                "percentage": 0.07,
+                "records": 33,
+                "workspaces": []
+            }
+        },
+        
+        "cost_breakdown": {
+            "by_compute_type": [
+                {
+                    "name": "Premium Serverless SQL DBU",
+                    "cost": 24984.04,
+                    "percentage": 52.1,
+                    "description": "SQL Analytics Interactive",
+                    "optimization_potential": "20%"
+                },
+                {
+                    "name": "Premium All-Purpose Photon DBU",
+                    "cost": 14480.56,
+                    "percentage": 30.2,
+                    "description": "ETL & ML Processing",
+                    "optimization_potential": "15%"
+                },
+                {
+                    "name": "Premium All-purpose Compute DBU",
+                    "cost": 5627.96,
+                    "percentage": 11.7,
+                    "description": "General Computing",
+                    "optimization_potential": "10%"
+                },
+                {
+                    "name": "Compute Instances",
+                    "cost": 1952.45,
+                    "percentage": 4.1,
+                    "description": "VM Instances (D series, E series)",
+                    "optimization_potential": "20%"
+                },
+                {
+                    "name": "Storage & Networking",
+                    "cost": 945.61,
+                    "percentage": 1.9,
+                    "description": "Data, Bandwidth, NAT Gateway",
+                    "optimization_potential": "5%"
+                }
+            ],
+            
+            "by_resource_group": [
+                {
+                    "name": "rg-nomo-eastus2-prod-001",
+                    "cost": 37130.47,
+                    "percentage": 77.4,
+                    "project": "NOMO",
+                    "service": "Migration",
+                    "resource_count": 2,
+                    "top_cost": "Serverless SQL ($8,328)"
+                },
+                {
+                    "name": "rg-bireports-prod-002",
+                    "cost": 8177.97,
+                    "percentage": 17.1,
+                    "project": "SIRIUS",
+                    "service": "BI Reports",
+                    "resource_count": 1,
+                    "top_cost": "All-Purpose Compute ($1,876)"
+                },
+                {
+                    "name": "rg-nomo-eastus2-prod-002",
+                    "cost": 1894.80,
+                    "percentage": 4.0,
+                    "project": "NOMO",
+                    "service": "Migration",
+                    "resource_count": 1,
+                    "top_cost": "Compute Instances"
+                },
+                {
+                    "name": "databricks-rg-adbworkspaceprod001-*",
+                    "cost": 753.85,
+                    "percentage": 1.6,
+                    "project": "SIRIUS",
+                    "service": "Managed",
+                    "resource_count": 1,
+                    "top_cost": "Auto-managed"
+                }
+            ]
+        },
+        
+        "workspaces": [
+            {
+                "name": "adbworkspaceprod001",
+                "environment": "Prod",
+                "location": "US East 2",
+                "resource_group": "rg-bireports-prod-002",
+                "project": "SIRIUS",
+                "service": "BI Reports",
+                "total_cost": 8177.97,
+                "status": "Active",
+                "top_3_costs": [
+                    {"type": "Premium All-purpose Compute DBU", "cost": 1875.99},
+                    {"type": "SQL Compute", "cost": 8.51},
+                    {"type": "Interactive Compute", "cost": 2.90}
+                ],
+                "tags": "environment:prod, project:sirius, service:reportsbi"
+            },
+            {
+                "name": "adbnomoeastus2prod001",
+                "environment": "Prod",
+                "location": "US East 2",
+                "resource_group": "rg-nomo-eastus2-prod-001",
+                "project": "NOMO",
+                "service": "Migration",
+                "total_cost": 37130.47,
+                "status": "Active",
+                "top_3_costs": [
+                    {"type": "Premium Serverless SQL DBU", "cost": 8328.01},
+                    {"type": "Premium All-Purpose Photon DBU", "cost": 3989.16},
+                    {"type": "Compute Instances", "cost": 1227.16}
+                ],
+                "tags": "environment:prod, project:nomo, service:migration",
+                "notes": "Primary workspace for migration project"
+            },
+            {
+                "name": "adbworkspaceqa004",
+                "environment": "QA",
+                "location": "US East 2",
+                "resource_group": "rg-nomo-eastus2-qa-001",
+                "project": "NOMO",
+                "service": "QA",
+                "total_cost": 33.53,
+                "status": "Minimal Usage",
+                "top_3_costs": [
+                    {"type": "Standard Node", "cost": 13.12},
+                    {"type": "Premium Automated Serverless Compute", "cost": 10.34},
+                    {"type": "Storage", "cost": 9.95}
+                ],
+                "tags": "environment:qa, project:nomo, service:qa"
+            }
+        ],
+        
+        "optimization_opportunities": [
+            {
+                "rank": 1,
+                "title": "Optimize Serverless SQL Queries",
+                "current_cost": 24984.04,
+                "potential_savings": "10-20%",
+                "savings_amount": "2,498-4,997",
+                "complexity": "Medium",
+                "effort_hours": 40,
+                "roi_months": 1,
+                "description": "Review and optimize SQL queries, implement query caching",
+                "impact": "High"
+            },
+            {
+                "rank": 2,
+                "title": "Implement Auto-Termination Policies",
+                "current_cost": 20108.52,
+                "potential_savings": "15-25%",
+                "savings_amount": "3,016-5,027",
+                "complexity": "Low",
+                "effort_hours": 20,
+                "roi_months": 0.5,
+                "description": "Set max inactivity 30 minutes for interactive clusters",
+                "impact": "High"
+            },
+            {
+                "rank": 3,
+                "title": "Switch to Standard Apache Spark (non-Photon)",
+                "current_cost": 14480.56,
+                "potential_savings": "5-10%",
+                "savings_amount": "724-1,448",
+                "complexity": "Medium",
+                "effort_hours": 30,
+                "roi_months": 2,
+                "description": "Evaluate workloads that don't require Photon optimization",
+                "impact": "Medium"
+            },
+            {
+                "rank": 4,
+                "title": "Use Spot Instances for Batch Jobs",
+                "current_cost": 1952.45,
+                "potential_savings": "5-15%",
+                "savings_amount": "98-293",
+                "complexity": "Medium",
+                "effort_hours": 25,
+                "roi_months": 3,
+                "description": "Use spot instances for fault-tolerant batch workloads",
+                "impact": "Medium"
+            },
+            {
+                "rank": 5,
+                "title": "Review & Consolidate QA Resources",
+                "current_cost": 33.53,
+                "potential_savings": "30-50%",
+                "savings_amount": "10-17",
+                "complexity": "Low",
+                "effort_hours": 5,
+                "roi_months": 12,
+                "description": "QA is already minimal, can be further consolidated",
+                "impact": "Low"
+            }
+        ],
+        
+        "total_savings_potential": {
+            "conservative": 10588,
+            "moderate": 15463,
+            "aggressive": 19539,
+            "conservative_percent": 22.1,
+            "moderate_percent": 32.3,
+            "aggressive_percent": 40.8
+        },
+        
+        "recommendations": [
+            {
+                "priority": "High",
+                "category": "Cost Optimization",
+                "action": "Implement Databricks cost monitoring dashboard",
+                "expected_impact": "Better visibility into daily costs"
+            },
+            {
+                "priority": "High",
+                "category": "Cost Optimization",
+                "action": "Review and optimize top 10 most expensive queries in SQL endpoints",
+                "expected_impact": "$2,500-5,000 annual savings"
+            },
+            {
+                "priority": "High",
+                "category": "Operations",
+                "action": "Enable auto-termination with 30-min idle timeout",
+                "expected_impact": "$3,000-5,000 annual savings"
+            },
+            {
+                "priority": "Medium",
+                "category": "Architecture",
+                "action": "Evaluate if all jobs require Photon (vs standard Spark)",
+                "expected_impact": "$700-1,500 annual savings"
+            },
+            {
+                "priority": "Medium",
+                "category": "Cost Optimization",
+                "action": "Implement reserved instances for predictable workloads",
+                "expected_impact": "Additional 15-20% savings on compute"
+            },
+            {
+                "priority": "Low",
+                "category": "Governance",
+                "action": "Establish Databricks cost allocation by project/team",
+                "expected_impact": "Better chargeback and accountability"
+            }
+        ]
+    }
+    
+    # Guardar JSON
+    json_path = os.path.join(OUTPUT_DIR, "databricks-dashboard.json")
+    with open(json_path, 'w', encoding='utf-8') as f:
+        json.dump(dashboard, f, indent=2, ensure_ascii=False, default=str)
+    
+    print("✓ Dashboard JSON creado")
+    return dashboard, json_path
+
+def create_comparison_table():
+    """Crea tabla de comparación para Excel"""
+    
+    data = {
+        'Métrica': [
+            'Costo Total',
+            'DBU Costs (SQL + All-Purpose)',
+            'Compute Instances',
+            'Storage & Networking',
+            'Ambientes',
+            'Workspaces',
+            'Costo Promedio por Workspace',
+            'Costo Diario Aproximado',
+            'Costo Mensual Aproximado'
+        ],
+        'Valor': [
+            '$47,990.62',
+            '$45,092.56 (93.9%)',
+            '$1,952.45 (4.1%)',
+            '$945.61 (1.9%)',
+            '2',
+            '3',
+            '$15,996.87',
+            '$1,599.69',
+            '$47,990.62'
+        ],
+        'Ambiente': [
+            'All',
+            'All',
+            'All',
+            'All',
+            'Prod=2, QA=1',
+            'Prod=2, QA=1',
+            'Average',
+            'Estimated',
+            'Current Period'
+        ]
+    }
+    
+    df = pd.DataFrame(data)
+    csv_path = os.path.join(OUTPUT_DIR, "databricks-metricas.csv")
+    df.to_csv(csv_path, index=False, encoding='utf-8')
+    print(f"✓ Tabla de métricas creada: {csv_path}")
+    
+    return df
+
+def main():
+    print("=" * 80)
+    print("CREACIÓN DE DASHBOARD Y COMPARATIVAS")
+    print("=" * 80)
+    
+    # Crear dashboard
+    dashboard, json_path = create_dashboard_json()
+    print(f"Dashboard JSON: {json_path}")
+    
+    # Crear tabla de comparación
+    df = create_comparison_table()
+    print(f"\nMétricas Generales:\n{df.to_string()}")
+    
+    # Mostrar resumen de ahorros
+    print("\n" + "=" * 80)
+    print("POTENCIAL DE AHORRO")
+    print("=" * 80)
+    savings = dashboard['total_savings_potential']
+    print(f"Conservador:  ${savings['conservative']:,.0f} ({savings['conservative_percent']:.1f}%)")
+    print(f"Moderado:     ${savings['moderate']:,.0f} ({savings['moderate_percent']:.1f}%)")
+    print(f"Agresivo:     ${savings['aggressive']:,.0f} ({savings['aggressive_percent']:.1f}%)")
+    
+    print("\n✅ Dashboard y comparativas creadas")
+
+if __name__ == "__main__":
+    main()

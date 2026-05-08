@@ -1,0 +1,129 @@
+{
+  "AWS Glue": {
+    "count": 3,
+    "estimated_cost": 56.58127515742275,
+    "resource_groups": [
+      "rg-bireports-prod-002",
+      "rg-nomo-eastus2-prod-001",
+      "rg-nomo-eastus2-qa-001"
+    ]
+  },
+  "EMR Serverless": {
+    "count": 1,
+    "estimated_cost": 5.2147550385,
+    "resource_groups": [
+      "rg-bireports-prod-002"
+    ]
+  },
+  "Redshift": {
+    "count": 1,
+    "estimated_cost": 21.7095767658,
+    "resource_groups": [
+      "rg-bireports-prod-002"
+    ]
+  },
+  "EC2 (EMR Cluster)": {
+    "count": 3,
+    "estimated_cost": 16810.84977512325,
+    "resource_groups": [
+      "rg-bireports-prod-002",
+      "rg-bireports-prod-002",
+      "rg-nomo-eastus2-prod-001"
+    ]
+  },
+  "Unknown": {
+    "count": 82,
+    "estimated_cost": 0,
+    "resource_groups": [
+      "rg-bireports-prod-002",
+      "rg-bireports-prod-002",
+      "rg-nomo-eastus2-prod-001",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-prod-002",
+      "rg-nomo-eastus2-qa-001",
+      "rg-nomo-eastus2-qa-001",
+      "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe",
+      "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe",
+      "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe",
+      "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe",
+      "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe",
+      "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe",
+      "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe",
+      "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe",
+      "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe",
+      "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe",
+      "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe",
+      "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe",
+      "rg-nomom-eastus2-qa-001",
+      "rg-nomom-eastus2-qa-001",
+      "rg-nomom-eastus2-qa-001",
+      "rg-nomom-eastus2-qa-001",
+      "rg-nomom-eastus2-qa-001",
+      "rg-nomom-eastus2-qa-001",
+      "rg-nomom-eastus2-qa-001",
+      "rg-nomom-eastus2-qa-001",
+      "rg-nomom-eastus2-qa-001",
+      "rg-nomom-eastus2-qa-001",
+      "rg-nomom-eastus2-qa-001",
+      "rg-nomom-eastus2-qa-001"
+    ]
+  },
+  "Athena": {
+    "count": 1,
+    "estimated_cost": 17488.8268905,
+    "resource_groups": [
+      "rg-nomo-eastus2-prod-001"
+    ]
+  }
+}

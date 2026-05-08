@@ -1,0 +1,209 @@
+{
+  "estimate": {
+    "estimateName": "Joomla_Produccion_1000Usuarios_HA",
+    "currency": "USD",
+    "region": "us-east-2",
+    "createdAt": "2026-05-07T17:30:25.855220",
+    "lastModified": "2026-05-07T17:30:25.855269",
+    "services": [
+      {
+        "serviceName": "Amazon EC2",
+        "description": "EC2 Primary - Joomla App Server (t4g.large)",
+        "resourceGroup": "Joomla-Servers",
+        "configuration": {
+          "operatingSystem": "Linux",
+          "instanceType": "t4g.large",
+          "tenancy": "Shared",
+          "quantity": 1,
+          "pricingStrategy": "OnDemand",
+          "detailedMonitoring": true,
+          "monthlyPricePerInstance": 0.041,
+          "hoursPerMonth": 730,
+          "monthlyHours": 730
+        },
+        "estimatedMonthlyCost": 29.93,
+        "notes": "Primary Joomla instance - t4g.large (2vCPU, 8GB RAM)"
+      },
+      {
+        "serviceName": "Amazon EC2",
+        "description": "EC2 Standby - Joomla Replica (t4g.large)",
+        "resourceGroup": "Joomla-Servers",
+        "configuration": {
+          "operatingSystem": "Linux",
+          "instanceType": "t4g.large",
+          "tenancy": "Shared",
+          "quantity": 1,
+          "pricingStrategy": "OnDemand",
+          "detailedMonitoring": true,
+          "monthlyPricePerInstance": 0.041,
+          "hoursPerMonth": 730
+        },
+        "estimatedMonthlyCost": 29.93,
+        "notes": "Standby instance in different AZ for High Availability"
+      },
+      {
+        "serviceName": "Application Load Balancer",
+        "description": "ALB - Joomla Load Balancer",
+        "resourceGroup": "Networking",
+        "configuration": {
+          "numberOfAlb": 1,
+          "processedBytesPerMonth": 100,
+          "newConnectionsPerSecond": 10,
+          "activeConnectionsPerMinute": 1000
+        },
+        "estimatedMonthlyCost": 20.0,
+        "notes": "ALB for distributing traffic to EC2 instances"
+      },
+      {
+        "serviceName": "Amazon RDS MySQL",
+        "description": "RDS MySQL - Joomla Database (Multi-AZ)",
+        "resourceGroup": "Database",
+        "configuration": {
+          "engine": "MySQL",
+          "instanceType": "db.t4g.micro",
+          "multiAz": true,
+          "allocatedStorageGb": 50,
+          "backupRetentionDays": 35,
+          "enhancedMonitoring": true,
+          "iops": 1000
+        },
+        "estimatedMonthlyCost": 87.5,
+        "notes": "Multi-AZ MySQL 8.0 with 35-day backup retention"
+      },
+      {
+        "serviceName": "Amazon S3 Standard",
+        "description": "S3 Standard - Joomla Media Library",
+        "resourceGroup": "Storage",
+        "configuration": {
+          "storageGb": 50,
+          "storageClass": "Standard",
+          "frequency": "month",
+          "pricePerGb": 0.023,
+          "putCopyPostListRequests": 10000,
+          "getSelectOtherRequests": 100000,
+          "dataTransferOut": 10
+        },
+        "estimatedMonthlyCost": 2.09,
+        "notes": "50GB storage for images, plugins, templates, user uploads"
+      },
+      {
+        "serviceName": "CloudFront CDN",
+        "description": "CloudFront - Content Delivery Network",
+        "resourceGroup": "CDN",
+        "configuration": {
+          "edgeLocations": "All",
+          "dataTransferOutGb": 10,
+          "httpRequests": 100000,
+          "httpsRequests": 100000,
+          "lambdaEdge": 0
+        },
+        "estimatedMonthlyCost": 7.6,
+        "notes": "CloudFront for caching images, CSS, JS - reduces S3 calls"
+      },
+      {
+        "serviceName": "NAT Gateway",
+        "description": "NAT Gateway - EC2 Internet Access",
+        "resourceGroup": "Networking",
+        "configuration": {
+          "numberOfNatGateways": 1,
+          "dataProcessedGb": 5
+        },
+        "estimatedMonthlyCost": 32.225,
+        "notes": "NAT Gateway for EC2 outbound traffic (updates, extensions, email)"
+      },
+      {
+        "serviceName": "CloudWatch",
+        "description": "CloudWatch - Monitoring and Logs",
+        "resourceGroup": "Monitoring",
+        "configuration": {
+          "logsIngestionGb": 100,
+          "logRetentionDays": 30,
+          "dashboards": 1,
+          "alarms": 5,
+          "customMetrics": 50
+        },
+        "estimatedMonthlyCost": 18.0,
+        "notes": "CloudWatch Logs for Apache, MySQL, Application monitoring"
+      },
+      {
+        "serviceName": "AWS Backup",
+        "description": "AWS Backup - Automated Backups",
+        "resourceGroup": "Backup",
+        "configuration": {
+          "protectedResourceType": "RDS",
+          "backupsPerMonth": 30,
+          "recoveryPointStorageGb": 50,
+          "crossRegionBackup": false
+        },
+        "estimatedMonthlyCost": 10.0,
+        "notes": "Daily automated backups for RDS (35-day retention)"
+      },
+      {
+        "serviceName": "Secrets Manager",
+        "description": "Secrets Manager - Database Credentials",
+        "resourceGroup": "Security",
+        "configuration": {
+          "secretsStored": 1,
+          "apiCallsPerMonth": 100000
+        },
+        "estimatedMonthlyCost": 0.4,
+        "notes": "Store RDS database password securely"
+      },
+      {
+        "serviceName": "Route 53",
+        "description": "Route 53 - DNS Management",
+        "resourceGroup": "Networking",
+        "configuration": {
+          "hostedZones": 1,
+          "queryVolume": 10000000,
+          "healthChecks": 1
+        },
+        "estimatedMonthlyCost": 0.9,
+        "notes": "DNS hosting and health checks for ALB"
+      },
+      {
+        "serviceName": "AWS Certificate Manager",
+        "description": "ACM - SSL/TLS Certificate",
+        "resourceGroup": "Security",
+        "configuration": {
+          "certificates": 1,
+          "autoRenewal": true
+        },
+        "estimatedMonthlyCost": 0.0,
+        "notes": "Free public SSL certificate with auto-renewal"
+      }
+    ],
+    "summary": {
+      "totalServiceCount": 12,
+      "estimatedMonthlyCost": 238.57,
+      "estimatedAnnualCost": 2862.9,
+      "pricingMode": "On-Demand Only",
+      "supportPlan": "Business ($515/mes recommended)",
+      "grandTotalWithSupport": 753.58
+    }
+  },
+  "metadata": {
+    "script_version": "1.0",
+    "generated_date": "2026-05-07T17:30:25.864791",
+    "joomla_specs": {
+      "users": 1000,
+      "concurrent_users_estimate": 100,
+      "architecture": "Multi-AZ High Availability",
+      "sla": "99.5%"
+    },
+    "aws_specs": {
+      "region": "us-east-2",
+      "ec2_type": "t4g.large",
+      "ec2_count": 2,
+      "rds_type": "db.t4g.micro",
+      "storage_gb": 50,
+      "backup_retention_days": 35
+    },
+    "costs": {
+      "monthly_services": 238.57,
+      "monthly_with_support": 753.58,
+      "annual_total": 9042.960000000001,
+      "cost_per_user_annual": 9.04296
+    }
+  }
+}

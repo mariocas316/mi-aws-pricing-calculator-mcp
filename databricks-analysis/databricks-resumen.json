@@ -1,0 +1,25 @@
+{
+  "fecha_extraccion": "2026-05-07T11:38:23.129606",
+  "resumen_por_ambiente": {
+    "Onnet": {
+      "total_cost": 6.8928173325055795,
+      "record_count": 4,
+      "unique_resources": 1
+    }
+  },
+  "total_registros": 23,
+  "columnas_disponibles": [
+    "ResourceId",
+    "ResourceType",
+    "ResourceLocation",
+    "ResourceGroupName",
+    "ServiceName",
+    "ServiceTier",
+    "Meter",
+    "Tags",
+    "CostUSD",
+    "Cost",
+    "Currency",
+    "Environment"
+  ]
+}

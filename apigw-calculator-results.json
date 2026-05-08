@@ -1,0 +1,14 @@
+[
+  {
+    "scenario": "On-Demand",
+    "filename": "apigw-ondemand"
+  },
+  {
+    "scenario": "SP 1yr",
+    "filename": "apigw-sp1yr"
+  },
+  {
+    "scenario": "SP 3yr",
+    "filename": "apigw-sp3yr"
+  }
+]

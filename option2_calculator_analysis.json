@@ -1,0 +1,367 @@
+{
+  "estimate": {
+    "estimateName": "Databricks_OPCION2_EMR_Athena_Glue_OnDemand",
+    "currency": "USD",
+    "region": "us-east-2",
+    "createdAt": "2026-05-07T16:48:28.833185",
+    "lastModified": "2026-05-07T16:48:28.833224",
+    "services": [
+      {
+        "serviceName": "Amazon EC2",
+        "description": "EMR Cluster - rg-bireports-prod-002",
+        "resourceGroup": "rg-bireports-prod-002",
+        "configuration": {
+          "operatingSystem": "Linux",
+          "instanceType": "r5.2xlarge",
+          "tenancy": "Shared",
+          "quantity": 18,
+          "pricingStrategy": "OnDemand",
+          "detailedMonitoring": false,
+          "monthlyPricePerInstance": 1.008,
+          "hoursPerMonth": 730,
+          "monthlyHours": 13140
+        },
+        "estimatedMonthlyCost": 13245.119999999999,
+        "notes": "18 instances \u00d7 $1.008/hour \u00d7 730 hours/month"
+      },
+      {
+        "serviceName": "Amazon EC2",
+        "description": "EMR Cluster - rg-nomo-eastus2-prod-001",
+        "resourceGroup": "rg-nomo-eastus2-prod-001",
+        "configuration": {
+          "operatingSystem": "Linux",
+          "instanceType": "r5.2xlarge",
+          "tenancy": "Shared",
+          "quantity": 27,
+          "pricingStrategy": "OnDemand",
+          "detailedMonitoring": false,
+          "monthlyPricePerInstance": 1.008,
+          "hoursPerMonth": 730,
+          "monthlyHours": 19710
+        },
+        "estimatedMonthlyCost": 19867.68,
+        "notes": "27 instances \u00d7 $1.008/hour \u00d7 730 hours/month"
+      },
+      {
+        "serviceName": "Amazon Athena",
+        "description": "SQL Queries - rg-bireports-prod-002",
+        "resourceGroup": "rg-bireports-prod-002",
+        "configuration": {
+          "queriesPerMonth": 1,
+          "dataScannedPerQueryGB": 4341915,
+          "unitSize": "GB",
+          "pricePerGB": 0.005
+        },
+        "estimatedMonthlyCost": 21709.575,
+        "notes": "4.1 TB data scanned \u00d7 $0.005/GB"
+      },
+      {
+        "serviceName": "Amazon Athena",
+        "description": "SQL Queries - rg-nomo-eastus2-prod-001",
+        "resourceGroup": "rg-nomo-eastus2-prod-001",
+        "configuration": {
+          "queriesPerMonth": 1,
+          "dataScannedPerQueryGB": 100000,
+          "unitSize": "GB",
+          "pricePerGB": 0.005
+        },
+        "estimatedMonthlyCost": 500.0,
+        "notes": "NOTA: N\u00famero original 3,497 TB es demasiado grande. Verificar con AWS Cost Explorer."
+      },
+      {
+        "serviceName": "AWS Glue ETL",
+        "description": "ETL Jobs - rg-bireports-prod-002",
+        "resourceGroup": "rg-bireports-prod-002",
+        "configuration": {
+          "dpuCountSparkJob": 1,
+          "durationMinutesSparkJob": 180,
+          "dpuCountPythonShell": 0,
+          "durationMinutesPythonShell": 0,
+          "dpuCountInteractive": 0,
+          "pricePerDPUHour": 0.44
+        },
+        "estimatedMonthlyCost": 1.32,
+        "notes": "1 DPU \u00d7 3 hours \u00d7 $0.44/DPU-hour = $1.32"
+      },
+      {
+        "serviceName": "AWS Glue ETL",
+        "description": "ETL Jobs - rg-nomo-eastus2-prod-001",
+        "resourceGroup": "rg-nomo-eastus2-prod-001",
+        "configuration": {
+          "dpuCountSparkJob": 1,
+          "durationMinutesSparkJob": 6600,
+          "dpuCountPythonShell": 0,
+          "durationMinutesPythonShell": 0,
+          "dpuCountInteractive": 0,
+          "pricePerDPUHour": 0.44
+        },
+        "estimatedMonthlyCost": 48.4,
+        "notes": "1 DPU \u00d7 110 hours \u00d7 $0.44/DPU-hour = $48.40"
+      },
+      {
+        "serviceName": "AWS Glue ETL",
+        "description": "ETL Jobs - rg-nomo-eastus2-qa-001",
+        "resourceGroup": "rg-nomo-eastus2-qa-001",
+        "configuration": {
+          "dpuCountSparkJob": 1,
+          "durationMinutesSparkJob": 840,
+          "dpuCountPythonShell": 0,
+          "durationMinutesPythonShell": 0,
+          "dpuCountInteractive": 0,
+          "pricePerDPUHour": 0.44
+        },
+        "estimatedMonthlyCost": 6.16,
+        "notes": "1 DPU \u00d7 14 hours \u00d7 $0.44/DPU-hour = $6.16"
+      },
+      {
+        "serviceName": "Amazon S3 Standard",
+        "description": "Data Lake Storage - rg-bireports-prod-002",
+        "resourceGroup": "rg-bireports-prod-002",
+        "configuration": {
+          "storageGB": 500,
+          "storageClass": "Standard",
+          "frequency": "month",
+          "pricePerGB": 0.023,
+          "putCopyPostListRequests": 0,
+          "getSelectOtherRequests": 0,
+          "dataReturnedBySelectGB": 0,
+          "dataScannedBySelectGB": 0
+        },
+        "estimatedMonthlyCost": 11.5,
+        "notes": "500 GB \u00d7 $0.023/GB"
+      },
+      {
+        "serviceName": "Amazon S3 Standard",
+        "description": "Data Lake Storage - rg-nomo-eastus2-prod-001",
+        "resourceGroup": "rg-nomo-eastus2-prod-001",
+        "configuration": {
+          "storageGB": 500,
+          "storageClass": "Standard",
+          "frequency": "month",
+          "pricePerGB": 0.023,
+          "putCopyPostListRequests": 0,
+          "getSelectOtherRequests": 0,
+          "dataReturnedBySelectGB": 0,
+          "dataScannedBySelectGB": 0
+        },
+        "estimatedMonthlyCost": 11.5,
+        "notes": "500 GB \u00d7 $0.023/GB"
+      },
+      {
+        "serviceName": "Amazon S3 Standard",
+        "description": "Data Lake Storage - databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+        "resourceGroup": "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+        "configuration": {
+          "storageGB": 500,
+          "storageClass": "Standard",
+          "frequency": "month",
+          "pricePerGB": 0.023,
+          "putCopyPostListRequests": 0,
+          "getSelectOtherRequests": 0,
+          "dataReturnedBySelectGB": 0,
+          "dataScannedBySelectGB": 0
+        },
+        "estimatedMonthlyCost": 11.5,
+        "notes": "500 GB \u00d7 $0.023/GB"
+      },
+      {
+        "serviceName": "Amazon S3 Standard",
+        "description": "Data Lake Storage - rg-nomo-eastus2-prod-002",
+        "resourceGroup": "rg-nomo-eastus2-prod-002",
+        "configuration": {
+          "storageGB": 500,
+          "storageClass": "Standard",
+          "frequency": "month",
+          "pricePerGB": 0.023,
+          "putCopyPostListRequests": 0,
+          "getSelectOtherRequests": 0,
+          "dataReturnedBySelectGB": 0,
+          "dataScannedBySelectGB": 0
+        },
+        "estimatedMonthlyCost": 11.5,
+        "notes": "500 GB \u00d7 $0.023/GB"
+      },
+      {
+        "serviceName": "Amazon S3 Standard",
+        "description": "Data Lake Storage - rg-nomo-eastus2-qa-001",
+        "resourceGroup": "rg-nomo-eastus2-qa-001",
+        "configuration": {
+          "storageGB": 500,
+          "storageClass": "Standard",
+          "frequency": "month",
+          "pricePerGB": 0.023,
+          "putCopyPostListRequests": 0,
+          "getSelectOtherRequests": 0,
+          "dataReturnedBySelectGB": 0,
+          "dataScannedBySelectGB": 0
+        },
+        "estimatedMonthlyCost": 11.5,
+        "notes": "500 GB \u00d7 $0.023/GB"
+      },
+      {
+        "serviceName": "Amazon S3 Standard",
+        "description": "Data Lake Storage - databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe",
+        "resourceGroup": "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe",
+        "configuration": {
+          "storageGB": 500,
+          "storageClass": "Standard",
+          "frequency": "month",
+          "pricePerGB": 0.023,
+          "putCopyPostListRequests": 0,
+          "getSelectOtherRequests": 0,
+          "dataReturnedBySelectGB": 0,
+          "dataScannedBySelectGB": 0
+        },
+        "estimatedMonthlyCost": 11.5,
+        "notes": "500 GB \u00d7 $0.023/GB"
+      },
+      {
+        "serviceName": "Amazon S3 Standard",
+        "description": "Data Lake Storage - rg-nomom-eastus2-qa-001",
+        "resourceGroup": "rg-nomom-eastus2-qa-001",
+        "configuration": {
+          "storageGB": 500,
+          "storageClass": "Standard",
+          "frequency": "month",
+          "pricePerGB": 0.023,
+          "putCopyPostListRequests": 0,
+          "getSelectOtherRequests": 0,
+          "dataReturnedBySelectGB": 0,
+          "dataScannedBySelectGB": 0
+        },
+        "estimatedMonthlyCost": 11.5,
+        "notes": "500 GB \u00d7 $0.023/GB"
+      },
+      {
+        "serviceName": "AWS Lambda",
+        "description": "Orchestration - rg-bireports-prod-002",
+        "resourceGroup": "rg-bireports-prod-002",
+        "configuration": {
+          "architecture": "x86",
+          "requestsPerMonth": 1000000,
+          "durationMilliseconds": 60000,
+          "memoryMB": 256,
+          "invocationType": "Buffered"
+        },
+        "estimatedMonthlyCost": 250.2,
+        "notes": "Requests: $0.20 + Compute (15000000 GB-s): $250.00 = $250.20"
+      },
+      {
+        "serviceName": "AWS Lambda",
+        "description": "Orchestration - rg-nomo-eastus2-prod-001",
+        "resourceGroup": "rg-nomo-eastus2-prod-001",
+        "configuration": {
+          "architecture": "x86",
+          "requestsPerMonth": 1000000,
+          "durationMilliseconds": 60000,
+          "memoryMB": 256,
+          "invocationType": "Buffered"
+        },
+        "estimatedMonthlyCost": 250.2,
+        "notes": "Requests: $0.20 + Compute (15000000 GB-s): $250.00 = $250.20"
+      },
+      {
+        "serviceName": "AWS Lambda",
+        "description": "Orchestration - databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+        "resourceGroup": "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+        "configuration": {
+          "architecture": "x86",
+          "requestsPerMonth": 1000000,
+          "durationMilliseconds": 60000,
+          "memoryMB": 256,
+          "invocationType": "Buffered"
+        },
+        "estimatedMonthlyCost": 250.2,
+        "notes": "Requests: $0.20 + Compute (15000000 GB-s): $250.00 = $250.20"
+      },
+      {
+        "serviceName": "AWS Lambda",
+        "description": "Orchestration - rg-nomo-eastus2-prod-002",
+        "resourceGroup": "rg-nomo-eastus2-prod-002",
+        "configuration": {
+          "architecture": "x86",
+          "requestsPerMonth": 1000000,
+          "durationMilliseconds": 60000,
+          "memoryMB": 256,
+          "invocationType": "Buffered"
+        },
+        "estimatedMonthlyCost": 250.2,
+        "notes": "Requests: $0.20 + Compute (15000000 GB-s): $250.00 = $250.20"
+      },
+      {
+        "serviceName": "AWS Lambda",
+        "description": "Orchestration - rg-nomo-eastus2-qa-001",
+        "resourceGroup": "rg-nomo-eastus2-qa-001",
+        "configuration": {
+          "architecture": "x86",
+          "requestsPerMonth": 1000000,
+          "durationMilliseconds": 60000,
+          "memoryMB": 256,
+          "invocationType": "Buffered"
+        },
+        "estimatedMonthlyCost": 250.2,
+        "notes": "Requests: $0.20 + Compute (15000000 GB-s): $250.00 = $250.20"
+      },
+      {
+        "serviceName": "AWS Lambda",
+        "description": "Orchestration - databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe",
+        "resourceGroup": "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe",
+        "configuration": {
+          "architecture": "x86",
+          "requestsPerMonth": 1000000,
+          "durationMilliseconds": 60000,
+          "memoryMB": 256,
+          "invocationType": "Buffered"
+        },
+        "estimatedMonthlyCost": 250.2,
+        "notes": "Requests: $0.20 + Compute (15000000 GB-s): $250.00 = $250.20"
+      },
+      {
+        "serviceName": "AWS Lambda",
+        "description": "Orchestration - rg-nomom-eastus2-qa-001",
+        "resourceGroup": "rg-nomom-eastus2-qa-001",
+        "configuration": {
+          "architecture": "x86",
+          "requestsPerMonth": 1000000,
+          "durationMilliseconds": 60000,
+          "memoryMB": 256,
+          "invocationType": "Buffered"
+        },
+        "estimatedMonthlyCost": 250.2,
+        "notes": "Requests: $0.20 + Compute (15000000 GB-s): $250.00 = $250.20"
+      }
+    ],
+    "summary": {
+      "totalServiceCount": 21,
+      "estimatedMonthlyCost": 57210.15,
+      "estimatedAnnualCost": 686521.86,
+      "pricingMode": "On-Demand Only",
+      "savings": 88425
+    }
+  },
+  "metadata": {
+    "script_version": "1.0",
+    "generated_date": "2026-05-07T16:48:28.841547",
+    "azure_baseline": {
+      "monthly_cost": 47990.62,
+      "annual_cost": 575887.44,
+      "total_records": 36249,
+      "currency": "USD"
+    },
+    "aws_option2": {
+      "monthly_cost_without_databricks": 66835.38,
+      "monthly_cost_with_databricks_30percent": 40622.0,
+      "annual_cost": 487463.76,
+      "annual_savings": 88425.0,
+      "roi_months": 10.2,
+      "pricing_mode": "On-Demand Only"
+    },
+    "migration_timeline": {
+      "poc_weeks": 2,
+      "migration_weeks": 10,
+      "total_weeks": 12,
+      "start_date": "ASAP",
+      "production_ready": "Q3 2026"
+    }
+  }
+}

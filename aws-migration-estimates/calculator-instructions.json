@@ -1,0 +1,274 @@
+{
+  "summary": {
+    "title": "AWS Pricing Calculator - Databricks Migration Estimates",
+    "total_azure_cost": 47990.62430901097,
+    "estimated_aws_cost": 0,
+    "created_date": "2026-05-07T12:15:25.494846",
+    "instructions": "Create separate estimates for each resource group using AWS Pricing Calculator"
+  },
+  "resource_group_estimates": [
+    {
+      "name": "Databricks_bireports_prod_002",
+      "azure_rg": "rg-bireports-prod-002",
+      "azure_cost": 8177.9656049923215,
+      "estimated_aws_cost": 6787.025919956745,
+      "services_to_add": [
+        {
+          "service": "EC2 (EMR Cluster)",
+          "description": "Spark cluster for Databricks workloads",
+          "estimated_monthly_cost": 6643.6992519135,
+          "configuration": {
+            "instance_type": "r5.2xlarge",
+            "instance_count": 18,
+            "operating_system": "Linux",
+            "workload": "Analytics",
+            "on_demand_or_reserved": "On-Demand"
+          }
+        },
+        {
+          "service": "Athena",
+          "description": "SQL queries on S3 data",
+          "estimated_monthly_cost": 21.7095767658,
+          "configuration": {
+            "query_type": "Standard",
+            "data_scanned_gb_per_month": 4341915
+          }
+        },
+        {
+          "service": "AWS Glue",
+          "description": "ETL and data catalog",
+          "estimated_monthly_cost": 1.617091277445,
+          "configuration": {
+            "dpu_hours_per_month": 3
+          }
+        },
+        {
+          "service": "S3",
+          "description": "Object storage for data lake",
+          "estimated_monthly_cost": 100,
+          "configuration": {
+            "storage_class": "Standard",
+            "estimated_storage_gb": 500,
+            "data_transfer_gb": 10
+          }
+        },
+        {
+          "service": "Lambda",
+          "description": "Serverless compute for job orchestration",
+          "estimated_monthly_cost": 20,
+          "configuration": {
+            "memory_mb": 256,
+            "duration_seconds": 60,
+            "monthly_invocations": 1000000
+          }
+        }
+      ]
+    },
+    {
+      "name": "Databricks_nomo_eastus2_prod_001",
+      "azure_rg": "rg-nomo-eastus2-prod-001",
+      "azure_cost": 37130.47345933229,
+      "estimated_aws_cost": 27829.952830903814,
+      "services_to_add": [
+        {
+          "service": "EC2 (EMR Cluster)",
+          "description": "Spark cluster for Databricks workloads",
+          "estimated_monthly_cost": 10172.365278248251,
+          "configuration": {
+            "instance_type": "r5.2xlarge",
+            "instance_count": 27,
+            "operating_system": "Linux",
+            "workload": "Analytics",
+            "on_demand_or_reserved": "On-Demand"
+          }
+        },
+        {
+          "service": "Athena",
+          "description": "SQL queries on S3 data",
+          "estimated_monthly_cost": 17488.8268905,
+          "configuration": {
+            "query_type": "Standard",
+            "data_scanned_gb_per_month": 3497765378
+          }
+        },
+        {
+          "service": "AWS Glue",
+          "description": "ETL and data catalog",
+          "estimated_monthly_cost": 48.760662155562,
+          "configuration": {
+            "dpu_hours_per_month": 110
+          }
+        },
+        {
+          "service": "S3",
+          "description": "Object storage for data lake",
+          "estimated_monthly_cost": 100,
+          "configuration": {
+            "storage_class": "Standard",
+            "estimated_storage_gb": 500,
+            "data_transfer_gb": 10
+          }
+        },
+        {
+          "service": "Lambda",
+          "description": "Serverless compute for job orchestration",
+          "estimated_monthly_cost": 20,
+          "configuration": {
+            "memory_mb": 256,
+            "duration_seconds": 60,
+            "monthly_invocations": 1000000
+          }
+        }
+      ]
+    },
+    {
+      "name": "Databricks_databricks_adbworkspaceprod001_itolunyqkjh7w",
+      "azure_rg": "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "azure_cost": 753.8545070463081,
+      "estimated_aws_cost": 120,
+      "services_to_add": [
+        {
+          "service": "S3",
+          "description": "Object storage for data lake",
+          "estimated_monthly_cost": 100,
+          "configuration": {
+            "storage_class": "Standard",
+            "estimated_storage_gb": 500,
+            "data_transfer_gb": 10
+          }
+        },
+        {
+          "service": "Lambda",
+          "description": "Serverless compute for job orchestration",
+          "estimated_monthly_cost": 20,
+          "configuration": {
+            "memory_mb": 256,
+            "duration_seconds": 60,
+            "monthly_invocations": 1000000
+          }
+        }
+      ]
+    },
+    {
+      "name": "Databricks_nomo_eastus2_prod_002",
+      "azure_rg": "rg-nomo-eastus2-prod-002",
+      "azure_cost": 1894.7981127256598,
+      "estimated_aws_cost": 120,
+      "services_to_add": [
+        {
+          "service": "S3",
+          "description": "Object storage for data lake",
+          "estimated_monthly_cost": 100,
+          "configuration": {
+            "storage_class": "Standard",
+            "estimated_storage_gb": 500,
+            "data_transfer_gb": 10
+          }
+        },
+        {
+          "service": "Lambda",
+          "description": "Serverless compute for job orchestration",
+          "estimated_monthly_cost": 20,
+          "configuration": {
+            "memory_mb": 256,
+            "duration_seconds": 60,
+            "monthly_invocations": 1000000
+          }
+        }
+      ]
+    },
+    {
+      "name": "Databricks_nomo_eastus2_qa_001",
+      "azure_rg": "rg-nomo-eastus2-qa-001",
+      "azure_cost": 10.339233707002409,
+      "estimated_aws_cost": 126.20352172441575,
+      "services_to_add": [
+        {
+          "service": "AWS Glue",
+          "description": "ETL and data catalog",
+          "estimated_monthly_cost": 6.203521724415749,
+          "configuration": {
+            "dpu_hours_per_month": 14
+          }
+        },
+        {
+          "service": "S3",
+          "description": "Object storage for data lake",
+          "estimated_monthly_cost": 100,
+          "configuration": {
+            "storage_class": "Standard",
+            "estimated_storage_gb": 500,
+            "data_transfer_gb": 10
+          }
+        },
+        {
+          "service": "Lambda",
+          "description": "Serverless compute for job orchestration",
+          "estimated_monthly_cost": 20,
+          "configuration": {
+            "memory_mb": 256,
+            "duration_seconds": 60,
+            "monthly_invocations": 1000000
+          }
+        }
+      ]
+    },
+    {
+      "name": "Databricks_databricks_adbworkspaceqa004_cu5rn7pfgeabe",
+      "azure_rg": "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe",
+      "azure_cost": 6.676340763456001,
+      "estimated_aws_cost": 120,
+      "services_to_add": [
+        {
+          "service": "S3",
+          "description": "Object storage for data lake",
+          "estimated_monthly_cost": 100,
+          "configuration": {
+            "storage_class": "Standard",
+            "estimated_storage_gb": 500,
+            "data_transfer_gb": 10
+          }
+        },
+        {
+          "service": "Lambda",
+          "description": "Serverless compute for job orchestration",
+          "estimated_monthly_cost": 20,
+          "configuration": {
+            "memory_mb": 256,
+            "duration_seconds": 60,
+            "monthly_invocations": 1000000
+          }
+        }
+      ]
+    },
+    {
+      "name": "Databricks_nomom_eastus2_qa_001",
+      "azure_rg": "rg-nomom-eastus2-qa-001",
+      "azure_cost": 16.517050443935997,
+      "estimated_aws_cost": 120,
+      "services_to_add": [
+        {
+          "service": "S3",
+          "description": "Object storage for data lake",
+          "estimated_monthly_cost": 100,
+          "configuration": {
+            "storage_class": "Standard",
+            "estimated_storage_gb": 500,
+            "data_transfer_gb": 10
+          }
+        },
+        {
+          "service": "Lambda",
+          "description": "Serverless compute for job orchestration",
+          "estimated_monthly_cost": 20,
+          "configuration": {
+            "memory_mb": 256,
+            "duration_seconds": 60,
+            "monthly_invocations": 1000000
+          }
+        }
+      ]
+    }
+  ],
+  "estimated_aws_cost": 35223.18227258498
+}

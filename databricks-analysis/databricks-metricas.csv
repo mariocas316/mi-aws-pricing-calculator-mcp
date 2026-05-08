@@ -1,0 +1,10 @@
+Métrica,Valor,Ambiente
+Costo Total,"$47,990.62",All
+DBU Costs (SQL + All-Purpose),"$45,092.56 (93.9%)",All
+Compute Instances,"$1,952.45 (4.1%)",All
+Storage & Networking,$945.61 (1.9%),All
+Ambientes,2,"Prod=2, QA=1"
+Workspaces,3,"Prod=2, QA=1"
+Costo Promedio por Workspace,"$15,996.87",Average
+Costo Diario Aproximado,"$1,599.69",Estimated
+Costo Mensual Aproximado,"$47,990.62",Current Period

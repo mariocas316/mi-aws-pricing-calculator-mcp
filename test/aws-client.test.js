@@ -113,6 +113,29 @@ describe('extractInputFields', () => {
     assert.equal(fields[0].options[0].id, 'standard');
   });
 
+  it('extracts dropdown selectors that export under a different field id', () => {
+    const def = { templates: [{ id: 'tpl', cards: [{ inputSection: { components: [{ row: [
+      { label: 'Deployment option', type: 'dropDown', selectorId: 'Deployment Option', exportValueAs: 'deploymentStrategy' },
+    ] }] } }] }] };
+    const fields = extractInputFields(def);
+    assert.equal(fields.length, 1);
+    assert.equal(fields[0].id, 'deploymentStrategy');
+    assert.equal(fields[0].type, 'dropdown');
+    assert.equal(fields[0].label, 'Deployment option');
+    assert.equal(fields[0].selectorId, 'Deployment Option');
+  });
+
+  it('extracts autoSuggest selectors using selectorId as the config key', () => {
+    const def = { templates: [{ id: 'tpl', cards: [{ inputSection: { components: [{ row: [
+      { label: 'Instance type', type: 'autoSuggest', selectorId: 'Instance Type', withTags: ['vCPU', 'Memory'] },
+    ] }] } }] }] };
+    const fields = extractInputFields(def);
+    assert.equal(fields.length, 1);
+    assert.equal(fields[0].id, 'Instance Type');
+    assert.equal(fields[0].type, 'autoSuggest');
+    assert.equal(fields[0].label, 'Instance type');
+  });
+
   it('skips WithoutFreeTier and _MVP duplicates', () => {
     const def = { templates: [{ id: 'tpl', groups: [{ items: [
       { id: 'requests', type: 'numericInput', label: 'Requests' },

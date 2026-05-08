@@ -1,0 +1,179 @@
+
+════════════════════════════════════════════════════════════════════════════════
+📝 INSTRUCCIONES PARA CREAR ESTIMADO EN AWS PRICING CALCULATOR
+════════════════════════════════════════════════════════════════════════════════
+
+🔧 MÉTODO 1: CREACIÓN MANUAL (RECOMENDADO)
+─────────────────────────────────────────────────────────────────────────────
+
+1. Abre AWS Pricing Calculator:
+   👉 https://calculator.aws/
+
+2. Haz clic en "Create estimate"
+
+3. Ingresa el nombre del estimado:
+   📌 Azure-to-AWS-Migration-2026-05-07
+
+4. Selecciona la región (si no está preseleccionada):
+   📍 us-east-2 (Ohio)
+
+5. Haz clic en "Add service"
+
+6. Selecciona "EC2 - Elastic Compute Cloud"
+
+7. Agrega las siguientes instancias en cantidad y tipo:
+   
+   ┌─ Instancia: t3.large
+   ├─ Cantidad: 35
+   ├─ vCPU: 2
+   ├─ Memoria: 8 GB
+   ├─ Sistema Operativo: Linux
+   ├─ Tenencia: Default
+   ├─ Opción de Compra: On-Demand
+   └─ Costo Estimado: $1050.00/mes
+   
+   ┌─ Instancia: c6i.large
+   ├─ Cantidad: 22
+   ├─ vCPU: 2
+   ├─ Memoria: 4 GB
+   ├─ Sistema Operativo: Linux
+   ├─ Tenencia: Default
+   ├─ Opción de Compra: On-Demand
+   └─ Costo Estimado: $1100.00/mes
+   
+   ┌─ Instancia: t3.xlarge
+   ├─ Cantidad: 20
+   ├─ vCPU: 4
+   ├─ Memoria: 16 GB
+   ├─ Sistema Operativo: Linux
+   ├─ Tenencia: Default
+   ├─ Opción de Compra: On-Demand
+   └─ Costo Estimado: $1200.00/mes
+   
+   ┌─ Instancia: t3.2xlarge
+   ├─ Cantidad: 18
+   ├─ vCPU: 8
+   ├─ Memoria: 32 GB
+   ├─ Sistema Operativo: Linux
+   ├─ Tenencia: Default
+   ├─ Opción de Compra: On-Demand
+   └─ Costo Estimado: $2160.00/mes
+   
+   ┌─ Instancia: m6i.8xlarge
+   ├─ Cantidad: 3
+   ├─ vCPU: 32
+   ├─ Memoria: 128 GB
+   ├─ Sistema Operativo: Linux
+   ├─ Tenencia: Default
+   ├─ Opción de Compra: On-Demand
+   └─ Costo Estimado: $3600.00/mes
+   
+   ┌─ Instancia: c6i.2xlarge
+   ├─ Cantidad: 8
+   ├─ vCPU: 8
+   ├─ Memoria: 16 GB
+   ├─ Sistema Operativo: Linux
+   ├─ Tenencia: Default
+   ├─ Opción de Compra: On-Demand
+   └─ Costo Estimado: $1600.00/mes
+   
+   ┌─ Instancia: r6i.xlarge
+   ├─ Cantidad: 1
+   ├─ vCPU: 4
+   ├─ Memoria: 32 GB
+   ├─ Sistema Operativo: Linux
+   ├─ Tenencia: Default
+   ├─ Opción de Compra: On-Demand
+   └─ Costo Estimado: $200.00/mes
+   
+   ┌─ Instancia: m6i.4xlarge
+   ├─ Cantidad: 4
+   ├─ vCPU: 16
+   ├─ Memoria: 64 GB
+   ├─ Sistema Operativo: Linux
+   ├─ Tenencia: Default
+   ├─ Opción de Compra: On-Demand
+   └─ Costo Estimado: $2400.00/mes
+   
+   ┌─ Instancia: r6i.large
+   ├─ Cantidad: 1
+   ├─ vCPU: 2
+   ├─ Memoria: 16 GB
+   ├─ Sistema Operativo: Linux
+   ├─ Tenencia: Default
+   ├─ Opción de Compra: On-Demand
+   └─ Costo Estimado: $100.00/mes
+
+8. Una vez completado todos los servicios, haz clic en "Create estimate"
+
+9. Exporta el estimado:
+   • Haz clic en "Export" (botón azul)
+   • Descarga el PDF o copia el enlace compartible
+   • Comparte la URL con tu equipo
+
+════════════════════════════════════════════════════════════════════════════════
+🔗 ENLACES ÚTILES
+════════════════════════════════════════════════════════════════════════════════
+
+Calculadora AWS:              https://calculator.aws/
+Crear Nuevo Estimado:         https://calculator.aws/#/createEstimate
+Ir a EC2 directamente:        https://calculator.aws/#/addService/us-east-2/EC2/EC2
+
+Mis Estimados Guardados:      https://calculator.aws/#/estimate
+
+════════════════════════════════════════════════════════════════════════════════
+💡 CONSEJOS
+════════════════════════════════════════════════════════════════════════════════
+
+✓ Guarda el estimado con un nombre descriptivo que incluya fecha
+✓ Puedes exportar a PDF para presentar a stakeholders
+✓ El URL es compartible y otros pueden verlo sin crear cuenta
+✓ Puedes comparar múltiples estimados lado a lado
+✓ Considera agregar costos de almacenamiento (EBS) y networking
+
+════════════════════════════════════════════════════════════════════════════════
+📊 RESUMEN DE INSTANCIAS A AGREGAR
+════════════════════════════════════════════════════════════════════════════════
+
+1. T3.LARGE        × 35 unidades = $1050.00/mes
+2. C6I.LARGE       × 22 unidades = $1100.00/mes
+3. T3.XLARGE       × 20 unidades = $1200.00/mes
+4. T3.2XLARGE      × 18 unidades = $2160.00/mes
+5. M6I.8XLARGE     ×  3 unidades = $3600.00/mes
+6. C6I.2XLARGE     ×  8 unidades = $1600.00/mes
+7. R6I.XLARGE      ×  1 unidades = $200.00/mes
+8. M6I.4XLARGE     ×  4 unidades = $2400.00/mes
+9. R6I.LARGE       ×  1 unidades = $100.00/mes
+
+TOTAL:                                     $13410.00/mes
+                                           $160920.00/año
+
+════════════════════════════════════════════════════════════════════════════════
+
+════════════════════════════════════════════════════════════════════════════════
+🎯 OPCIONES DE PRICING PARA COMPARAR
+════════════════════════════════════════════════════════════════════════════════
+
+Puedes ajustar los precios en AWS Pricing Calculator seleccionando:
+
+1. ON-DEMAND (Sin compromiso):
+   Precio: $13410.00/mes
+   Perfecto para: Pruebas, desarrollo, cargas variables
+   
+2. RESERVED INSTANCES - 1 AÑO (30% descuento):
+   Precio: $9387.00/mes
+   Anual: $112644.00
+   Ahorro: $48276.00/año
+   
+3. RESERVED INSTANCES - 3 AÑOS (50% descuento):
+   Precio: $6705.00/mes
+   Anual: $80460.00
+   Ahorro: $80460.00/año
+
+4. SPOT INSTANCES (70% descuento - máximo ahorro):
+   Precio: $4023.00/mes
+   Anual: $48276.00
+   Ahorro: $112644.00/año
+   Nota: Pueden interrumpirse, ideal para procesos batch
+
+════════════════════════════════════════════════════════════════════════════════

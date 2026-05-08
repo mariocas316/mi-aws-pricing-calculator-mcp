@@ -13,6 +13,7 @@ describe('EC2 transformConfig', () => {
     assert.equal(result.pricingStrategy.value.selectedOption, 'on-demand');
     assert.equal(result.ec2AdvancedPricingMetrics.value, 1);
     assert.equal(result.detailedMonitoringCheckbox.value, false);
+    assert.equal(result.snapshotFrequency.value, '0');
     assert.ok(result.dataTransferForEC2, 'should have dataTransferForEC2');
   });
 

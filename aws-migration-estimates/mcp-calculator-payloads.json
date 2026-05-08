@@ -1,0 +1,214 @@
+{
+  "metadata": {
+    "source": "Databricks Azure Migration",
+    "date": "2026-05-07T12:15:25.503870",
+    "total_estimates": 7,
+    "note": "Use these payloads with AWS Pricing Calculator MCP tool"
+  },
+  "estimates": [
+    {
+      "name": "Databricks_bireports_prod_002",
+      "region": "us-east-1",
+      "group": "Databricks Migration",
+      "services": [
+        {
+          "service": "amazonEC2",
+          "instance": "On Demand",
+          "config": {
+            "quantity": "18",
+            "selectedOS": "linux",
+            "instanceType": "r5.2xlarge",
+            "tenancy": "shared",
+            "region": "us-east-1"
+          }
+        },
+        {
+          "service": "amazonAthena",
+          "config": {
+            "region": "us-east-1",
+            "description": "SQL on S3"
+          }
+        },
+        {
+          "service": "awsGlue",
+          "config": {
+            "region": "us-east-1",
+            "description": "ETL Jobs"
+          }
+        },
+        {
+          "service": "amazonS3",
+          "config": {
+            "region": "us-east-1",
+            "description": "Data Lake Storage"
+          }
+        },
+        {
+          "service": "awsLambda",
+          "config": {
+            "region": "us-east-1",
+            "description": "Job Orchestration"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Databricks_nomo_eastus2_prod_001",
+      "region": "us-east-1",
+      "group": "Databricks Migration",
+      "services": [
+        {
+          "service": "amazonEC2",
+          "instance": "On Demand",
+          "config": {
+            "quantity": "27",
+            "selectedOS": "linux",
+            "instanceType": "r5.2xlarge",
+            "tenancy": "shared",
+            "region": "us-east-1"
+          }
+        },
+        {
+          "service": "amazonAthena",
+          "config": {
+            "region": "us-east-1",
+            "description": "SQL on S3"
+          }
+        },
+        {
+          "service": "awsGlue",
+          "config": {
+            "region": "us-east-1",
+            "description": "ETL Jobs"
+          }
+        },
+        {
+          "service": "amazonS3",
+          "config": {
+            "region": "us-east-1",
+            "description": "Data Lake Storage"
+          }
+        },
+        {
+          "service": "awsLambda",
+          "config": {
+            "region": "us-east-1",
+            "description": "Job Orchestration"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Databricks_databricks_adbworkspaceprod001_itolunyqkjh7w",
+      "region": "us-east-1",
+      "group": "Databricks Migration",
+      "services": [
+        {
+          "service": "amazonS3",
+          "config": {
+            "region": "us-east-1",
+            "description": "Data Lake Storage"
+          }
+        },
+        {
+          "service": "awsLambda",
+          "config": {
+            "region": "us-east-1",
+            "description": "Job Orchestration"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Databricks_nomo_eastus2_prod_002",
+      "region": "us-east-1",
+      "group": "Databricks Migration",
+      "services": [
+        {
+          "service": "amazonS3",
+          "config": {
+            "region": "us-east-1",
+            "description": "Data Lake Storage"
+          }
+        },
+        {
+          "service": "awsLambda",
+          "config": {
+            "region": "us-east-1",
+            "description": "Job Orchestration"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Databricks_nomo_eastus2_qa_001",
+      "region": "us-east-1",
+      "group": "Databricks Migration",
+      "services": [
+        {
+          "service": "awsGlue",
+          "config": {
+            "region": "us-east-1",
+            "description": "ETL Jobs"
+          }
+        },
+        {
+          "service": "amazonS3",
+          "config": {
+            "region": "us-east-1",
+            "description": "Data Lake Storage"
+          }
+        },
+        {
+          "service": "awsLambda",
+          "config": {
+            "region": "us-east-1",
+            "description": "Job Orchestration"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Databricks_databricks_adbworkspaceqa004_cu5rn7pfgeabe",
+      "region": "us-east-1",
+      "group": "Databricks Migration",
+      "services": [
+        {
+          "service": "amazonS3",
+          "config": {
+            "region": "us-east-1",
+            "description": "Data Lake Storage"
+          }
+        },
+        {
+          "service": "awsLambda",
+          "config": {
+            "region": "us-east-1",
+            "description": "Job Orchestration"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Databricks_nomom_eastus2_qa_001",
+      "region": "us-east-1",
+      "group": "Databricks Migration",
+      "services": [
+        {
+          "service": "amazonS3",
+          "config": {
+            "region": "us-east-1",
+            "description": "Data Lake Storage"
+          }
+        },
+        {
+          "service": "awsLambda",
+          "config": {
+            "region": "us-east-1",
+            "description": "Job Orchestration"
+          }
+        }
+      ]
+    }
+  ]
+}

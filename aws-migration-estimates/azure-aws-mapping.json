@@ -1,0 +1,856 @@
+{
+  "title": "Azure Databricks to AWS Migration Mapping",
+  "date": "2026-05-07T11:51:25.775402",
+  "total_azure_cost": 47990.62430901097,
+  "resource_groups": {
+    "rg-bireports-prod-002": {
+      "azure_name": "rg-bireports-prod-002",
+      "azure_cost": 8177.9656049923215,
+      "estimated_aws_cost": 6667.025919956746,
+      "aws_components": [
+        {
+          "azure_meter": "Premium Automated Serverless Compute - Promo DBU",
+          "azure_cost": 2.695152129075,
+          "azure_count": 3,
+          "aws_equivalent": "AWS Lambda + Glue",
+          "aws_service": "lambda-glue",
+          "main_component": "AWS Glue",
+          "supporting_services": [
+            "Lambda",
+            "S3"
+          ],
+          "estimated_aws_cost": 1.617091277445
+        },
+        {
+          "azure_meter": "Premium Interactive Serverless Compute - Promo DBU",
+          "azure_cost": 8.6912583975,
+          "azure_count": 3,
+          "aws_equivalent": "AWS EMR Serverless or SageMaker",
+          "aws_service": "emr-serverless",
+          "main_component": "EMR Serverless",
+          "supporting_services": [
+            "S3"
+          ],
+          "estimated_aws_cost": 5.2147550385
+        },
+        {
+          "azure_meter": "Premium SQL Compute Pro DBU",
+          "azure_cost": 25.540678548000002,
+          "azure_count": 3,
+          "aws_equivalent": "AWS Athena + Redshift",
+          "aws_service": "athena-redshift",
+          "main_component": "Redshift",
+          "supporting_services": [
+            "Athena",
+            "S3"
+          ],
+          "estimated_aws_cost": 21.7095767658
+        },
+        {
+          "azure_meter": "Premium All-Purpose Photon DBU",
+          "azure_cost": 2513.07527394,
+          "azure_count": 3,
+          "aws_equivalent": "AWS EMR (Spark) + Photon-like optimization",
+          "aws_service": "emr",
+          "main_component": "EC2 (EMR Cluster)",
+          "supporting_services": [
+            "EBS",
+            "S3"
+          ],
+          "estimated_aws_cost": 2136.113982849
+        },
+        {
+          "azure_meter": "Premium All-purpose Compute DBU",
+          "azure_cost": 5627.963142532501,
+          "azure_count": 3,
+          "aws_equivalent": "AWS EMR (Spark) Cluster",
+          "aws_service": "emr",
+          "main_component": "EC2 (EMR Cluster)",
+          "supporting_services": [
+            "EBS",
+            "S3"
+          ],
+          "estimated_aws_cost": 4502.370514026001
+        },
+        {
+          "azure_meter": "Standard Data Transfer Out",
+          "azure_cost": 3.74505767999978e-06,
+          "azure_count": 2,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Standard Data Processed",
+          "azure_cost": 9.57001877999998e-05,
+          "azure_count": 2,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        }
+      ],
+      "data_migration": {
+        "estimated_size_gb": 0,
+        "estimated_transfer_cost": 0
+      }
+    },
+    "rg-nomo-eastus2-prod-001": {
+      "azure_name": "rg-nomo-eastus2-prod-001",
+      "azure_cost": 37130.47345933229,
+      "estimated_aws_cost": 27709.952830903814,
+      "aws_components": [
+        {
+          "azure_meter": "Premium Automated Serverless Compute - Promo DBU",
+          "azure_cost": 81.26777025927001,
+          "azure_count": 3,
+          "aws_equivalent": "AWS Lambda + Glue",
+          "aws_service": "lambda-glue",
+          "main_component": "AWS Glue",
+          "supporting_services": [
+            "Lambda",
+            "S3"
+          ],
+          "estimated_aws_cost": 48.760662155562
+        },
+        {
+          "azure_meter": "Premium Serverless SQL DBU",
+          "azure_cost": 24984.038415000003,
+          "azure_count": 3,
+          "aws_equivalent": "AWS Athena",
+          "aws_service": "athena",
+          "main_component": "Athena",
+          "supporting_services": [
+            "S3",
+            "Glue"
+          ],
+          "estimated_aws_cost": 17488.8268905
+        },
+        {
+          "azure_meter": "Premium All-Purpose Photon DBU",
+          "azure_cost": 11967.488562645001,
+          "azure_count": 3,
+          "aws_equivalent": "AWS EMR (Spark) + Photon-like optimization",
+          "aws_service": "emr",
+          "main_component": "EC2 (EMR Cluster)",
+          "supporting_services": [
+            "EBS",
+            "S3"
+          ],
+          "estimated_aws_cost": 10172.365278248251
+        },
+        {
+          "azure_meter": "Standard Data Processed",
+          "azure_cost": 97.6787114280138,
+          "azure_count": 2,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        }
+      ],
+      "data_migration": {
+        "estimated_size_gb": 0,
+        "estimated_transfer_cost": 0
+      }
+    },
+    "databricks-rg-adbworkspaceprod001-itolunyqkjh7w": {
+      "azure_name": "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+      "azure_cost": 753.8545070463081,
+      "estimated_aws_cost": 0,
+      "aws_components": [
+        {
+          "azure_meter": "P15 LRS Disk",
+          "azure_cost": 107.5777500672,
+          "azure_count": 2729,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "P4 LRS Disk",
+          "azure_cost": 18.162500832000003,
+          "azure_count": 2704,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Standard Data Processed - Ingress",
+          "azure_cost": 6.351516410487131,
+          "azure_count": 2437,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Intra-Region Egress",
+          "azure_cost": 0.009502031795494248,
+          "azure_count": 2436,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Standard Data Processed - Egress",
+          "azure_cost": 0.335039870768585,
+          "azure_count": 2436,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Intra-Region Ingress",
+          "azure_cost": 0.019126749824545677,
+          "azure_count": 2434,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Intra Continent Data Transfer Out",
+          "azure_cost": 0.5185155647456209,
+          "azure_count": 2316,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "D8ads v5 Spot",
+          "azure_cost": 182.3194723392,
+          "azure_count": 2067,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Standard P2 Node",
+          "azure_cost": 42.991200000000006,
+          "azure_count": 1189,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Standard Data Transfer Out",
+          "azure_cost": 0.0012398130187019703,
+          "azure_count": 294,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "D8ads v5",
+          "azure_cost": 185.81218380143997,
+          "azure_count": 282,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "L8s v3 Spot",
+          "azure_cost": 38.19386685240001,
+          "azure_count": 247,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "L16s v3",
+          "azure_cost": 136.84968598392,
+          "azure_count": 70,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "L16s v3 Spot",
+          "azure_cost": 4.830935256,
+          "azure_count": 15,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "E8ds v4 Spot",
+          "azure_cost": 1.16342226,
+          "azure_count": 4,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Standard Node",
+          "azure_cost": 19.073124,
+          "azure_count": 2,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot GRS Data Stored",
+          "azure_cost": 3.467180978856,
+          "azure_count": 2,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot GRS Write Operations",
+          "azure_cost": 1.9698588,
+          "azure_count": 2,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "E16ds v4",
+          "azure_cost": 1.6934738688,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "L8s v3",
+          "azure_cost": 0.71825636484,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Free Transactions",
+          "azure_cost": 0.0,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Delete Operations",
+          "azure_cost": 0.0,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot GRS Index",
+          "azure_cost": 0.009764907012,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot GRS Iterative Read Operations",
+          "azure_cost": 0.03999996,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot Other Operations",
+          "azure_cost": 0.073634652,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot Read Operations",
+          "azure_cost": 0.0472648176,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot LRS Delete Operations",
+          "azure_cost": 0.0,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot LRS Other Operations",
+          "azure_cost": 0.01871667,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot LRS Read Operations",
+          "azure_cost": 0.00569331,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Geo-Replication v2 Data transfer",
+          "azure_cost": 1.6015808844,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        }
+      ],
+      "data_migration": {
+        "estimated_size_gb": 0,
+        "estimated_transfer_cost": 0
+      }
+    },
+    "rg-nomo-eastus2-prod-002": {
+      "azure_name": "rg-nomo-eastus2-prod-002",
+      "azure_cost": 1894.7981127256598,
+      "estimated_aws_cost": 0,
+      "aws_components": [
+        {
+          "azure_meter": "Standard IPv4 Static Public IP",
+          "azure_cost": 15.82477225,
+          "azure_count": 1888,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "P10 LRS Disk",
+          "azure_cost": 50.579417548799995,
+          "azure_count": 1718,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "P15 LRS Disk",
+          "azure_cost": 97.51383936,
+          "azure_count": 1718,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Intra-Region Ingress",
+          "azure_cost": 0.06030655960365755,
+          "azure_count": 1656,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Intra-Region Egress",
+          "azure_cost": 0.028732127213849122,
+          "azure_count": 1653,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Standard Data Transfer Out",
+          "azure_cost": 0.3654601853008559,
+          "azure_count": 1649,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Intra Continent Data Transfer Out",
+          "azure_cost": 5.133589804249594,
+          "azure_count": 1617,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "D4 v2/DS4 v2",
+          "azure_cost": 689.12805839976,
+          "azure_count": 1563,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Standard P2 Node",
+          "azure_cost": 42.2856,
+          "azure_count": 882,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "D5 v2/DS5 v2",
+          "azure_cost": 538.0342385947199,
+          "azure_count": 148,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Standard Node",
+          "azure_cost": 19.073124,
+          "azure_count": 2,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot GRS Data Stored",
+          "azure_cost": 325.63132416234,
+          "azure_count": 2,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot GRS Write Operations",
+          "azure_cost": 25.722906300000002,
+          "azure_count": 2,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Free Transactions",
+          "azure_cost": 0.0,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Delete Operations",
+          "azure_cost": 0.0,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot GRS Index",
+          "azure_cost": 0.022740753672,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot GRS Iterative Read Operations",
+          "azure_cost": 2.102373,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot Other Operations",
+          "azure_cost": 6.2551360872,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot Read Operations",
+          "azure_cost": 29.763265896,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot LRS Delete Operations",
+          "azure_cost": 0.0,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot LRS Other Operations",
+          "azure_cost": 0.0144396,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot LRS Read Operations",
+          "azure_cost": 0.30527847,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Geo-Replication v2 Data transfer",
+          "azure_cost": 46.9535096268,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        }
+      ],
+      "data_migration": {
+        "estimated_size_gb": 0,
+        "estimated_transfer_cost": 0
+      }
+    },
+    "rg-nomo-eastus2-qa-001": {
+      "azure_name": "rg-nomo-eastus2-qa-001",
+      "azure_cost": 10.339233707002409,
+      "estimated_aws_cost": 6.203521724415749,
+      "aws_components": [
+        {
+          "azure_meter": "Premium Automated Serverless Compute - Promo DBU",
+          "azure_cost": 10.339202874026249,
+          "azure_count": 3,
+          "aws_equivalent": "AWS Lambda + Glue",
+          "aws_service": "lambda-glue",
+          "main_component": "AWS Glue",
+          "supporting_services": [
+            "Lambda",
+            "S3"
+          ],
+          "estimated_aws_cost": 6.203521724415749
+        },
+        {
+          "azure_meter": "Standard Data Transfer Out",
+          "azure_cost": 9.77459615999386e-06,
+          "azure_count": 2,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Standard Data Processed",
+          "azure_cost": 2.10583799999964e-05,
+          "azure_count": 2,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        }
+      ],
+      "data_migration": {
+        "estimated_size_gb": 0,
+        "estimated_transfer_cost": 0
+      }
+    },
+    "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe": {
+      "azure_name": "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe",
+      "azure_cost": 6.676340763456001,
+      "estimated_aws_cost": 0,
+      "aws_components": [
+        {
+          "azure_meter": "Standard Node",
+          "azure_cost": 6.56208,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Delete Operations",
+          "azure_cost": 0.0,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot GRS Data Stored",
+          "azure_cost": 0.104267607696,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot GRS Index",
+          "azure_cost": 0.00073964016,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot GRS Iterative Read Operations",
+          "azure_cost": 0.00782964,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot GRS Write Operations",
+          "azure_cost": 9.828e-05,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot Other Operations",
+          "azure_cost": 0.0012756744,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot Read Operations",
+          "azure_cost": 1.3104e-06,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "List Operations",
+          "azure_cost": 9.45e-06,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot LRS Other Operations",
+          "azure_cost": 1.953e-05,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot LRS Read Operations",
+          "azure_cost": 1.953e-05,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Geo-Replication v2 Data transfer",
+          "azure_cost": 1.008e-07,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        }
+      ],
+      "data_migration": {
+        "estimated_size_gb": 0,
+        "estimated_transfer_cost": 0
+      }
+    },
+    "rg-nomom-eastus2-qa-001": {
+      "azure_name": "rg-nomom-eastus2-qa-001",
+      "azure_cost": 16.517050443935997,
+      "estimated_aws_cost": 0,
+      "aws_components": [
+        {
+          "azure_meter": "Hot GRS Data Stored",
+          "azure_cost": 9.845097578064,
+          "azure_count": 2,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot GRS Write Operations",
+          "azure_cost": 0.04199832,
+          "azure_count": 2,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Standard Node",
+          "azure_cost": 6.56208,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Delete Operations",
+          "azure_cost": 0.0,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot GRS Index",
+          "azure_cost": 0.021597492672,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot GRS Iterative Read Operations",
+          "azure_cost": 0.03690414,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot Other Operations",
+          "azure_cost": 0.0047482344,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot Read Operations",
+          "azure_cost": 0.0011511864,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "List Operations",
+          "azure_cost": 9.45e-06,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot LRS Other Operations",
+          "azure_cost": 0.00024444,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Hot LRS Read Operations",
+          "azure_cost": 4.473e-05,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        },
+        {
+          "azure_meter": "Geo-Replication v2 Data transfer",
+          "azure_cost": 0.0031748724,
+          "azure_count": 1,
+          "aws_equivalent": "AWS Services (Mixed)",
+          "aws_service": "mixed",
+          "note": "Included in main compute services"
+        }
+      ],
+      "data_migration": {
+        "estimated_size_gb": 0,
+        "estimated_transfer_cost": 0
+      }
+    }
+  }
+}

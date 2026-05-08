@@ -1,0 +1,962 @@
+{
+  "summary": {
+    "CentralHub": {
+      "vms": 17,
+      "vcpu": 64,
+      "ram": 248.0,
+      "disk": 25370.0,
+      "cost_monthly": 1200.0,
+      "cost_annual": 14400.0
+    },
+    "Dev": {
+      "vms": 11,
+      "vcpu": 54,
+      "ram": 188.0,
+      "disk": 60520.0,
+      "cost_monthly": 1670.0,
+      "cost_annual": 20040.0
+    },
+    "Prod": {
+      "vms": 44,
+      "vcpu": 252,
+      "ram": 744.0,
+      "disk": 30960.0,
+      "cost_monthly": 6010.0,
+      "cost_annual": 72120.0
+    },
+    "QA": {
+      "vms": 19,
+      "vcpu": 68,
+      "ram": 264.0,
+      "disk": 3188.0,
+      "cost_monthly": 1780.0,
+      "cost_annual": 21360.0
+    },
+    "Unknown": {
+      "vms": 21,
+      "vcpu": 130,
+      "ram": 456.0,
+      "disk": 20723.0,
+      "cost_monthly": 2750.0,
+      "cost_annual": 33000.0
+    }
+  },
+  "total": {
+    "vms": 112,
+    "vcpu": 2,
+    "ram": 8.0,
+    "disk_gb": 140761.0,
+    "monthly_cost": 13410.0,
+    "annual_cost": 160920.0,
+    "annual_1yr_reserved": 112644.0,
+    "annual_3yr_reserved": 80460.0
+  },
+  "vms_by_env": {
+    "CentralHub": [
+      {
+        "name": "vm-files-eastus2-centalhub-001",
+        "azure_size": "Standard_B2as_v2",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-ad-eastus2-centralhub-001",
+        "azure_size": "Standard_B2ms",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-gisdsk-eastus2-centralhub-001",
+        "azure_size": "Standard_D4as_v4",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "vm-jobserver-centrahub-001",
+        "azure_size": "Standard_B2ms",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-ad-eastus2-centralhub-004",
+        "azure_size": "Standard_B2als_v2",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      },
+      {
+        "name": "fw-fortinet-eastus2-centralhub-001",
+        "azure_size": "Standard_F2s",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      },
+      {
+        "name": "fw-fortinet-eastus2-centralhub-001",
+        "azure_size": "Standard_F2s",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      },
+      {
+        "name": "vm-ad-eastus2-centralhub-002",
+        "azure_size": "Standard_B2ms",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-ad-eastus2-centralhub-003",
+        "azure_size": "Standard_B2as_v2",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-assestment-eastus2-centralhub-001",
+        "azure_size": "Standard_B4ms",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "vm-bp-jumpbox-eastus2-centralhub-001",
+        "azure_size": "Standard_B2s",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      },
+      {
+        "name": "vm-bp-jumpbox-eastus2-centralhub-002",
+        "azure_size": "Standard_B8ms",
+        "vcpu": 8,
+        "memory_gb": 32.0,
+        "aws_equivalent": "t3.2xlarge",
+        "monthly_cost": 120.0
+      },
+      {
+        "name": "vm-gisdsk-eastus2-centralhub-002",
+        "azure_size": "Standard_D8as_v4",
+        "vcpu": 8,
+        "memory_gb": 32.0,
+        "aws_equivalent": "t3.2xlarge",
+        "monthly_cost": 120.0
+      },
+      {
+        "name": "vm-gisdsk-eastus2-centralhub-003",
+        "azure_size": "Standard_NV8as_v4",
+        "vcpu": 8,
+        "memory_gb": 28.0,
+        "aws_equivalent": "t3.2xlarge",
+        "monthly_cost": 120.0
+      },
+      {
+        "name": "vm-jumpbox-eastus2-centralhub-001",
+        "azure_size": "Standard_B8ms",
+        "vcpu": 8,
+        "memory_gb": 32.0,
+        "aws_equivalent": "t3.2xlarge",
+        "monthly_cost": 120.0
+      },
+      {
+        "name": "vm-veeam-centralhub-001",
+        "azure_size": "Standard_DC4ds_v3",
+        "vcpu": 4,
+        "memory_gb": 32.0,
+        "aws_equivalent": "r6i.xlarge",
+        "monthly_cost": 200.0
+      },
+      {
+        "name": "vm-veeam-eastus2-centralhub-002",
+        "azure_size": "Standard_B2s",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      }
+    ],
+    "Dev": [
+      {
+        "name": "vm-bp-uaa-eastus2-dev-002",
+        "azure_size": "Standard_D32as_v6",
+        "vcpu": 32,
+        "memory_gb": 128.0,
+        "aws_equivalent": "m6i.8xlarge",
+        "monthly_cost": 1200.0
+      },
+      {
+        "name": "vm-devops-agentpool-eastus2-centralhub-001",
+        "azure_size": "Standard_B2s",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      },
+      {
+        "name": "vm-devops-api-eastus2-dev-001",
+        "azure_size": "Standard_B2s",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      },
+      {
+        "name": "vm-devops-api-eastus2-dev-002",
+        "azure_size": "Standard_B2ms",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-gis-jumpbox-eastus2-dev-001",
+        "azure_size": "Standard_B2s",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      },
+      {
+        "name": "vm-jumbox-bss-api-eastus2-dev-001",
+        "azure_size": "Standard_B2s",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      },
+      {
+        "name": "vm-sn-jumpbox-eastus2-dev-001",
+        "azure_size": "Standard_B2s",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      },
+      {
+        "name": "vm-bp-install-dev-001",
+        "azure_size": "Standard_B2s",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      },
+      {
+        "name": "vm-bp-uaakafka-eastus2-dev-001",
+        "azure_size": "Standard_B4ms",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "vm-ms-eastus2-dev-002",
+        "azure_size": "Standard_B2as_v2",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-sn-ms-eastus2-dev-001",
+        "azure_size": "Standard_B2s",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      }
+    ],
+    "Prod": [
+      {
+        "name": "vm-monitor-eastus2-prod-001",
+        "azure_size": "Standard_F8s_v2",
+        "vcpu": 8,
+        "memory_gb": 16.0,
+        "aws_equivalent": "c6i.2xlarge",
+        "monthly_cost": 200.0
+      },
+      {
+        "name": "vm-bp-syslog-eastus2-prod-001",
+        "azure_size": "Standard_D2as_v4",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-gis-apo-eastus2-prod-001",
+        "azure_size": "Standard_D4as_v4",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "vm-gis-apo-eastus2-prod-005",
+        "azure_size": "Standard_B2as_v2",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-gis-aes-eastus2-prod-002",
+        "azure_size": "Standard_F32s_v2",
+        "vcpu": 32,
+        "memory_gb": 64.0,
+        "aws_equivalent": "m6i.8xlarge",
+        "monthly_cost": 1200.0
+      },
+      {
+        "name": "vm-gis-aes-eastus2-prod-004",
+        "azure_size": "Standard_B4as_v2",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "vm-gis-apo-eastus2-prod-006",
+        "azure_size": "Standard_B2als_v2",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      },
+      {
+        "name": "vm-gis-apo-eastus2-prod-007",
+        "azure_size": "Standard_B2als_v2",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      },
+      {
+        "name": "vm-gis-ds-eastus2-prod-007",
+        "azure_size": "Standard_B2as_v2",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-gis-fs-eastus2-prod-004",
+        "azure_size": "Standard_B2ms",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-gis-fs-eastus2-prod-006",
+        "azure_size": "Standard_B2ms",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-gis-nss-eastus2-prod-001",
+        "azure_size": "Standard_D8as_v4",
+        "vcpu": 8,
+        "memory_gb": 32.0,
+        "aws_equivalent": "t3.2xlarge",
+        "monthly_cost": 120.0
+      },
+      {
+        "name": "vm-gis-was-eastus2-prod-001",
+        "azure_size": "Standard_D2as_v4",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-gis-was-eastus2-prod-002",
+        "azure_size": "Standard_D2as_v4",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-sn-ms-eastus2-prod-001",
+        "azure_size": "Standard_B8als_v2",
+        "vcpu": 8,
+        "memory_gb": 16.0,
+        "aws_equivalent": "c6i.2xlarge",
+        "monthly_cost": 200.0
+      },
+      {
+        "name": "vm-sn-ms-eastus2-prod-003",
+        "azure_size": "Standard_B4ms",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "vm-sn-ms-eastus2-prod-004",
+        "azure_size": "Standard_B4ms",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "vm-sn-ms-eastus2-prod-005",
+        "azure_size": "Standard_B4ms",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "vm-sn-ms-eastus2-prod-006",
+        "azure_size": "Standard_B4ms",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "vm-reportbi-eastus2-prod-001",
+        "azure_size": "Standard_D8s_v3",
+        "vcpu": 8,
+        "memory_gb": 32.0,
+        "aws_equivalent": "t3.2xlarge",
+        "monthly_cost": 120.0
+      },
+      {
+        "name": "vm-bi-eastus2-prod-001",
+        "azure_size": "Standard_D2as_v4",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-bi-eastus2-prod-002",
+        "azure_size": "Standard_D2as_v4",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-bp-uaakafka-eastus2-prod-001",
+        "azure_size": "Standard_D8as_v4",
+        "vcpu": 8,
+        "memory_gb": 32.0,
+        "aws_equivalent": "t3.2xlarge",
+        "monthly_cost": 120.0
+      },
+      {
+        "name": "vm-bpetl-eastus2-prod-001",
+        "azure_size": "Standard_B2s",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      },
+      {
+        "name": "vm-arcgis-eastus2-prod-001",
+        "azure_size": "Standard_D8ads_v5",
+        "vcpu": 8,
+        "memory_gb": 32.0,
+        "aws_equivalent": "t3.2xlarge",
+        "monthly_cost": 120.0
+      },
+      {
+        "name": "vm-arcgis-eastus2-prod-002",
+        "azure_size": "Standard_B2s",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      },
+      {
+        "name": "vm-gis-aes-eastus2-prod-003",
+        "azure_size": "Standard_F32s_v2",
+        "vcpu": 32,
+        "memory_gb": 64.0,
+        "aws_equivalent": "m6i.8xlarge",
+        "monthly_cost": 1200.0
+      },
+      {
+        "name": "vm-gis-aes-eastus2-prod-005",
+        "azure_size": "Standard_B8as_v2",
+        "vcpu": 8,
+        "memory_gb": 32.0,
+        "aws_equivalent": "t3.2xlarge",
+        "monthly_cost": 120.0
+      },
+      {
+        "name": "vm-gis-aes-eastus2-prod-006",
+        "azure_size": "Standard_B2as_v2",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-gis-aes-eastus2-prod-007",
+        "azure_size": "Standard_B2as_v2",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-gis-aes-eastus2-prod-008",
+        "azure_size": "Standard_F8s_v2",
+        "vcpu": 8,
+        "memory_gb": 16.0,
+        "aws_equivalent": "c6i.2xlarge",
+        "monthly_cost": 200.0
+      },
+      {
+        "name": "vm-gis-aes-eastus2-prod-009",
+        "azure_size": "Standard_F8s_v2",
+        "vcpu": 8,
+        "memory_gb": 16.0,
+        "aws_equivalent": "c6i.2xlarge",
+        "monthly_cost": 200.0
+      },
+      {
+        "name": "vm-gis-apo-eastus2-prod-002",
+        "azure_size": "Standard_D4as_v4",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "vm-gis-apo-eastus2-prod-004",
+        "azure_size": "Standard_B4as_v2",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "vm-gis-apo-eastus2-prod-008",
+        "azure_size": "Standard_F8s_v2",
+        "vcpu": 8,
+        "memory_gb": 16.0,
+        "aws_equivalent": "c6i.2xlarge",
+        "monthly_cost": 200.0
+      },
+      {
+        "name": "vm-gis-apo-eastus2-prod-009",
+        "azure_size": "Standard_F8s_v2",
+        "vcpu": 8,
+        "memory_gb": 16.0,
+        "aws_equivalent": "c6i.2xlarge",
+        "monthly_cost": 200.0
+      },
+      {
+        "name": "vm-gis-ds-eastus2-prod-004",
+        "azure_size": "Standard_B2as_v2",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-gis-ds-eastus2-prod-005",
+        "azure_size": "Standard_B4as_v2",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "vm-gis-ds-eastus2-prod-006",
+        "azure_size": "Standard_B4as_v2",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "vm-gis-nss-eastus2-prod-002",
+        "azure_size": "Standard_D2as_v4",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-gis-was-eastus2-prod-003",
+        "azure_size": "Standard_F8s_v2",
+        "vcpu": 8,
+        "memory_gb": 16.0,
+        "aws_equivalent": "c6i.2xlarge",
+        "monthly_cost": 200.0
+      },
+      {
+        "name": "vm-gis-was-eastus2-prod-004",
+        "azure_size": "Standard_F8s_v2",
+        "vcpu": 8,
+        "memory_gb": 16.0,
+        "aws_equivalent": "c6i.2xlarge",
+        "monthly_cost": 200.0
+      },
+      {
+        "name": "vm-sigfo-eastus2-prod-001",
+        "azure_size": "Standard_E2as_v4",
+        "vcpu": 2,
+        "memory_gb": 16.0,
+        "aws_equivalent": "r6i.large",
+        "monthly_cost": 100.0
+      },
+      {
+        "name": "vm-sn-ms-eastus2-prod-002",
+        "azure_size": "Standard_D8_v4",
+        "vcpu": 8,
+        "memory_gb": 32.0,
+        "aws_equivalent": "t3.2xlarge",
+        "monthly_cost": 120.0
+      }
+    ],
+    "QA": [
+      {
+        "name": "vm-bp-syslog-eastus2-qa-001",
+        "azure_size": "Standard_D2as_v4",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-gis-was-eastus2-qa-001",
+        "azure_size": "Standard_D2a_v4",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-bp-uaakafka-eastus2-qa-001",
+        "azure_size": "Standard_B2ms",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-bpetl-eastus2-qa-002",
+        "azure_size": "Standard_B2s",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      },
+      {
+        "name": "vm-gis-aes-eastus2-qa-001",
+        "azure_size": "Standard_B16ms",
+        "vcpu": 16,
+        "memory_gb": 64.0,
+        "aws_equivalent": "m6i.4xlarge",
+        "monthly_cost": 600.0
+      },
+      {
+        "name": "vm-gis-aes-eastus2-qa-komodo-001",
+        "azure_size": "Standard_B16ms",
+        "vcpu": 16,
+        "memory_gb": 64.0,
+        "aws_equivalent": "m6i.4xlarge",
+        "monthly_cost": 600.0
+      },
+      {
+        "name": "vm-gis-apo-eastus2-qa-001",
+        "azure_size": "Standard_B2as_v2",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-gis-apo-eastus2-qa-komodo-001",
+        "azure_size": "Standard_D2as_v4",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-gis-nss-eastus2-qa-002",
+        "azure_size": "Standard_D2as_v4",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-gis-nss-eastus2-qa-005",
+        "azure_size": "Standard_D2as_v4",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-gis-nss-eastus2-qa-k-005",
+        "azure_size": "Standard_D2as_v4",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-gis-nss-eastus2-qa-komodo-005",
+        "azure_size": "Standard_D2as_v4",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-gis-was-eastus2-qa-komodo-001",
+        "azure_size": "Standard_D2as_v4",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-sn-ms-eastus2-qa-001",
+        "azure_size": "Standard_D4_v4",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "vm-sn-ms-eastus2-qa-002",
+        "azure_size": "Standard_B2ms",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-sn-ms-eastus2-qa-003",
+        "azure_size": "Standard_B2ms",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-sn-ms-eastus2-qa-004",
+        "azure_size": "Standard_B2ms",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "vm-sn-ms-eastus2-qa-005",
+        "azure_size": "Standard_B2ms",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "sn-test-server-domain",
+        "azure_size": "Standard_B2s",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      }
+    ],
+    "Unknown": [
+      {
+        "name": "vm-bp-mdso-jumpbox-eastus2-003",
+        "azure_size": "Standard_B2s",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      },
+      {
+        "name": "VBA-6ee72aae-8b4d-47bf-b958-1aa1ed6aa0ab",
+        "azure_size": "Standard_F2s_v2",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      },
+      {
+        "name": "hp-vdk-0",
+        "azure_size": "Standard_B4ms",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "hp-vdk-1",
+        "azure_size": "Standard_B4ms",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "hp-vdk-2",
+        "azure_size": "Standard_B4ms",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "hp-vdk-3",
+        "azure_size": "Standard_B4ms",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "vm-bp-lic-eastus2-001",
+        "azure_size": "Standard_D4d_v4",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "vm-gis-lic-eastus2-001",
+        "azure_size": "Standard_B2s",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      },
+      {
+        "name": "vm-hardening-eastus2-001",
+        "azure_size": "Standard_B2s",
+        "vcpu": 2,
+        "memory_gb": 4.0,
+        "aws_equivalent": "c6i.large",
+        "monthly_cost": 50.0
+      },
+      {
+        "name": "aks-timer-84908109-vms2",
+        "azure_size": "Standard_D4as_v5",
+        "vcpu": 4,
+        "memory_gb": 16.0,
+        "aws_equivalent": "t3.xlarge",
+        "monthly_cost": 60.0
+      },
+      {
+        "name": "205eebdf9e9a4024af05446a013a6bb8",
+        "azure_size": "Standard_DS4_v2",
+        "vcpu": 8,
+        "memory_gb": 28.0,
+        "aws_equivalent": "t3.2xlarge",
+        "monthly_cost": 120.0
+      },
+      {
+        "name": "205eebdf9e9a4024af05446a013a6bb8",
+        "azure_size": "Standard_DS4_v2",
+        "vcpu": 8,
+        "memory_gb": 28.0,
+        "aws_equivalent": "t3.2xlarge",
+        "monthly_cost": 120.0
+      },
+      {
+        "name": "451ae730db1346febc40074d8f824a51",
+        "azure_size": "Standard_DS5_v2",
+        "vcpu": 16,
+        "memory_gb": 56.0,
+        "aws_equivalent": "m6i.4xlarge",
+        "monthly_cost": 600.0
+      },
+      {
+        "name": "451ae730db1346febc40074d8f824a51",
+        "azure_size": "Standard_DS5_v2",
+        "vcpu": 16,
+        "memory_gb": 56.0,
+        "aws_equivalent": "m6i.4xlarge",
+        "monthly_cost": 600.0
+      },
+      {
+        "name": "654be515e6204bc389e882420c92d404",
+        "azure_size": "Standard_DS4_v2",
+        "vcpu": 8,
+        "memory_gb": 28.0,
+        "aws_equivalent": "t3.2xlarge",
+        "monthly_cost": 120.0
+      },
+      {
+        "name": "654be515e6204bc389e882420c92d404",
+        "azure_size": "Standard_DS4_v2",
+        "vcpu": 8,
+        "memory_gb": 28.0,
+        "aws_equivalent": "t3.2xlarge",
+        "monthly_cost": 120.0
+      },
+      {
+        "name": "fcdb2d3c95924faabff77d98a02ef8bc",
+        "azure_size": "Standard_DS4_v2",
+        "vcpu": 8,
+        "memory_gb": 28.0,
+        "aws_equivalent": "t3.2xlarge",
+        "monthly_cost": 120.0
+      },
+      {
+        "name": "fcdb2d3c95924faabff77d98a02ef8bc",
+        "azure_size": "Standard_DS4_v2",
+        "vcpu": 8,
+        "memory_gb": 28.0,
+        "aws_equivalent": "t3.2xlarge",
+        "monthly_cost": 120.0
+      },
+      {
+        "name": "rescate-syslog-borrar",
+        "azure_size": "Standard_B2ms",
+        "vcpu": 2,
+        "memory_gb": 8.0,
+        "aws_equivalent": "t3.large",
+        "monthly_cost": 30.0
+      },
+      {
+        "name": "5ce6cec50d5b4416a8d60a963311e6ec",
+        "azure_size": "Standard_DS4_v2",
+        "vcpu": 8,
+        "memory_gb": 28.0,
+        "aws_equivalent": "t3.2xlarge",
+        "monthly_cost": 120.0
+      },
+      {
+        "name": "5ce6cec50d5b4416a8d60a963311e6ec",
+        "azure_size": "Standard_DS4_v2",
+        "vcpu": 8,
+        "memory_gb": 28.0,
+        "aws_equivalent": "t3.2xlarge",
+        "monthly_cost": 120.0
+      }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+
+════════════════════════════════════════════════════════════════════════════════
+🎯 REPORTE DE ESTIMADO AWS - MIGRACIÓN AZURE
+════════════════════════════════════════════════════════════════════════════════
+
+📊 INFORMACIÓN DEL ESTIMADO
+─────────────────────────────────────────────────────────────────────────────
+Nombre:                    Azure-to-AWS-Migration-2026-05-07
+Región AWS:                us-east-2
+Fecha Generación:          7/5/2026, 0:56:45
+
+💻 INFRAESTRUCTURA
+─────────────────────────────────────────────────────────────────────────────
+Total de VMs:              112
+
+Distribución por Instancia:
+  • t3.large             (×35): $1050.00/mes ($12600.00/año)
+  • c6i.large            (×22): $1100.00/mes ($13200.00/año)
+  • t3.xlarge            (×20): $1200.00/mes ($14400.00/año)
+  • t3.2xlarge           (×18): $2160.00/mes ($25920.00/año)
+  • m6i.8xlarge          (× 3): $3600.00/mes ($43200.00/año)
+  • c6i.2xlarge          (× 8): $1600.00/mes ($19200.00/año)
+  • r6i.xlarge           (× 1): $200.00/mes ($2400.00/año)
+  • m6i.4xlarge          (× 4): $2400.00/mes ($28800.00/año)
+  • r6i.large            (× 1): $100.00/mes ($1200.00/año)
+
+💰 COSTOS (MENSUAL / ANUAL)
+─────────────────────────────────────────────────────────────────────────────
+AWS OnDemand:              $13410.00 / $160920.00
+Azure Actual:              $1545.07 / $222489.80
+Ahorros Potenciales:       $-11864.93 / $61569.80
+Porcentaje Ahorro:         27.7%
+
+📎 ACCESO AL ESTIMADO
+─────────────────────────────────────────────────────────────────────────────
+URL Calculadora:           https://calculator.aws/
+Nombre Estimado:           Azure-to-AWS-Migration-2026-05-07
+
+Para crear/acceder al estimado:
+1. Abre: https://calculator.aws/
+2. Selecciona "Create new estimate"
+3. Ingresa el nombre: Azure-to-AWS-Migration-2026-05-07
+4. Selecciona región: us-east-2
+5. Agrega servicios EC2 según distribución anterior
+
+🎯 PRÓXIMOS PASOS
+─────────────────────────────────────────────────────────────────────────────
+1. ✅ Revisar costos en AWS Pricing Calculator
+2. ✅ Ajustar opciones de pricing (OnDemand, Reserved, Spot)
+3. ✅ Exportar PDF del estimado
+4. ✅ Compartir con stakeholders
+5. ✅ Planificar migración por fases (PROD → HUB → DEV → QA)
+
+════════════════════════════════════════════════════════════════════════════════

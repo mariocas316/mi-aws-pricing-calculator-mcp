@@ -1,0 +1,135 @@
+{
+  "rg-bireports-prod-002": {
+    "region": "us-east-1",
+    "environment": "rg-bireports-prod-002",
+    "components": [
+      {
+        "service": "EMR",
+        "type": "Hadoop Cluster",
+        "azure_cost": 8149.729674870001,
+        "estimated_aws_cost": 6643.6992519135,
+        "details": "3 cluster(s)"
+      },
+      {
+        "service": "Athena",
+        "type": "SQL Query Engine",
+        "azure_cost": 25.540678548000002,
+        "estimated_aws_cost": 21.7095767658,
+        "details": "SQL endpoints: 1"
+      },
+      {
+        "service": "Glue",
+        "type": "ETL Service",
+        "azure_cost": 2.695152129075,
+        "estimated_aws_cost": 1.617091277445,
+        "details": "Jobs: 1"
+      },
+      {
+        "service": "S3",
+        "type": "Object Storage",
+        "estimated_monthly_cost": 100,
+        "details": "Delta Lake compatibility"
+      }
+    ]
+  },
+  "rg-nomo-eastus2-prod-001": {
+    "region": "us-east-1",
+    "environment": "rg-nomo-eastus2-prod-001",
+    "components": [
+      {
+        "service": "EMR",
+        "type": "Hadoop Cluster",
+        "azure_cost": 11967.488562645001,
+        "estimated_aws_cost": 10172.365278248251,
+        "details": "1 cluster(s)"
+      },
+      {
+        "service": "Athena",
+        "type": "SQL Query Engine",
+        "azure_cost": 24984.038415000003,
+        "estimated_aws_cost": 17488.8268905,
+        "details": "SQL endpoints: 1"
+      },
+      {
+        "service": "Glue",
+        "type": "ETL Service",
+        "azure_cost": 81.26777025927001,
+        "estimated_aws_cost": 48.760662155562,
+        "details": "Jobs: 1"
+      },
+      {
+        "service": "S3",
+        "type": "Object Storage",
+        "estimated_monthly_cost": 100,
+        "details": "Delta Lake compatibility"
+      }
+    ]
+  },
+  "databricks-rg-adbworkspaceprod001-itolunyqkjh7w": {
+    "region": "us-east-1",
+    "environment": "databricks-rg-adbworkspaceprod001-itolunyqkjh7w",
+    "components": [
+      {
+        "service": "S3",
+        "type": "Object Storage",
+        "estimated_monthly_cost": 100,
+        "details": "Delta Lake compatibility"
+      }
+    ]
+  },
+  "rg-nomo-eastus2-prod-002": {
+    "region": "us-east-1",
+    "environment": "rg-nomo-eastus2-prod-002",
+    "components": [
+      {
+        "service": "S3",
+        "type": "Object Storage",
+        "estimated_monthly_cost": 100,
+        "details": "Delta Lake compatibility"
+      }
+    ]
+  },
+  "rg-nomo-eastus2-qa-001": {
+    "region": "us-east-1",
+    "environment": "rg-nomo-eastus2-qa-001",
+    "components": [
+      {
+        "service": "Glue",
+        "type": "ETL Service",
+        "azure_cost": 10.339202874026249,
+        "estimated_aws_cost": 6.203521724415749,
+        "details": "Jobs: 1"
+      },
+      {
+        "service": "S3",
+        "type": "Object Storage",
+        "estimated_monthly_cost": 100,
+        "details": "Delta Lake compatibility"
+      }
+    ]
+  },
+  "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe": {
+    "region": "us-east-1",
+    "environment": "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe",
+    "components": [
+      {
+        "service": "S3",
+        "type": "Object Storage",
+        "estimated_monthly_cost": 100,
+        "details": "Delta Lake compatibility"
+      }
+    ]
+  },
+  "rg-nomom-eastus2-qa-001": {
+    "region": "us-east-1",
+    "environment": "rg-nomom-eastus2-qa-001",
+    "components": [
+      {
+        "service": "S3",
+        "type": "Object Storage",
+        "estimated_monthly_cost": 100,
+        "details": "Delta Lake compatibility"
+      }
+    ]
+  }
+}

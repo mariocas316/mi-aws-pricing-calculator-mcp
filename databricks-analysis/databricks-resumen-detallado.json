@@ -1,0 +1,86 @@
+{
+  "fecha_extraccion": "2026-05-07T11:39:28.773949",
+  "costo_total": 47990.624309010964,
+  "total_registros": 36249,
+  "por_ambiente": {
+    "Prod-04-17-1534.xlsx": {
+      "costo_total": 47957.09168409657,
+      "registros": 36216,
+      "por_tipo": {
+        "Premium Serverless SQL DBU": 24984.038415000003,
+        "Premium All-Purpose Photon DBU": 14480.563836584999,
+        "Premium All-purpose Compute DBU": 5627.963142532501,
+        "D4 v2/DS4 v2": 689.1280583997648,
+        "D5 v2/DS5 v2": 538.0342385947198,
+        "Hot GRS Data Stored": 329.098505141196,
+        "P15 LRS Disk": 205.09158942720043,
+        "D8ads v5": 185.81218380143986,
+        "D8ads v5 Spot": 182.3194723392002,
+        "L16s v3": 136.84968598392,
+        "Standard Data Processed": 97.6788071282016,
+        "Standard P2 Node": 85.27679999999887,
+        "Premium Automated Serverless Compute - Promo DBU": 83.962922388345,
+        "P10 LRS Disk": 50.57941754879993,
+        "Geo-Replication v2 Data transfer": 48.5550905112,
+        "L8s v3 Spot": 38.19386685239997,
+        "Standard Node": 38.146248,
+        "Hot Read Operations": 29.8105307136,
+        "Hot GRS Write Operations": 27.692765100000003,
+        "Premium SQL Compute Pro DBU": 25.540678548000002,
+        "P4 LRS Disk": 18.162500831999985,
+        "Standard IPv4 Static Public IP": 15.824772250000034,
+        "Premium Interactive Serverless Compute - Promo DBU": 8.6912583975,
+        "Standard Data Processed - Ingress": 6.351516410487145,
+        "Hot Other Operations": 6.3287707392,
+        "Intra Continent Data Transfer Out": 5.652105368995289,
+        "L16s v3 Spot": 4.830935256,
+        "Hot GRS Iterative Read Operations": 2.14237296,
+        "E16ds v4": 1.6934738688,
+        "E8ds v4 Spot": 1.16342226,
+        "L8s v3": 0.71825636484,
+        "Standard Data Transfer Out": 0.36670374337724215,
+        "Standard Data Processed - Egress": 0.33503987076859926,
+        "Hot LRS Read Operations": 0.31097178000000003,
+        "Intra-Region Ingress": 0.07943330942820728,
+        "Intra-Region Egress": 0.03823415900934482,
+        "Hot LRS Other Operations": 0.03315627,
+        "Hot GRS Index": 0.032505660684,
+        "Free Transactions": 0.0,
+        "Delete Operations": 0.0,
+        "Hot LRS Delete Operations": 0.0
+      },
+      "por_recurso": {
+        "rg-nomo-eastus2-prod-001": 37130.47345933229,
+        "rg-bireports-prod-002": 8177.96560499232,
+        "rg-nomo-eastus2-prod-002": 1894.7981127256671,
+        "databricks-rg-adbworkspaceprod001-itolunyqkjh7w": 753.8545070463239
+      }
+    },
+    "QA-04-17-1536.xlsx": {
+      "costo_total": 33.532624914394404,
+      "registros": 33,
+      "por_tipo": {
+        "Standard Node": 13.12416,
+        "Premium Automated Serverless Compute - Promo DBU": 10.339202874026249,
+        "Hot GRS Data Stored": 9.94936518576,
+        "Hot GRS Iterative Read Operations": 0.04473378,
+        "Hot GRS Write Operations": 0.0420966,
+        "Hot GRS Index": 0.022337132832,
+        "Hot Other Operations": 0.0060239088,
+        "Geo-Replication v2 Data transfer": 0.0031749732000000003,
+        "Hot Read Operations": 0.0011524967999999999,
+        "Hot LRS Other Operations": 0.00026397000000000004,
+        "Hot LRS Read Operations": 6.426e-05,
+        "Standard Data Processed": 2.10583799999964e-05,
+        "List Operations": 1.89e-05,
+        "Standard Data Transfer Out": 9.77459615999386e-06,
+        "Delete Operations": 0.0
+      },
+      "por_recurso": {
+        "rg-nomom-eastus2-qa-001": 16.517050443936,
+        "rg-nomo-eastus2-qa-001": 10.339233707002409,
+        "databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe": 6.676340763456001
+      }
+    }
+  }
+}

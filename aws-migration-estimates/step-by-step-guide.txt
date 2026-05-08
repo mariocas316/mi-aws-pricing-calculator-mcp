@@ -1,0 +1,225 @@
+====================================================================================================
+GUÍA PASO A PASO PARA AWS PRICING CALCULATOR
+====================================================================================================
+
+
+📋 ESTIMACIÓN 1: Databricks_bireports_prod_002
+   Azure Resource Group: rg-bireports-prod-002
+   Costo Azure: $8,177.97
+   Costo AWS Estimado: $6,787.03
+
+   PASOS:
+
+   1. EC2 (EMR Cluster)
+      Descripción: Spark cluster for Databricks workloads
+      Costo Estimado: $6,643.70
+      Configuración:
+         • instance_type: r5.2xlarge
+         • instance_count: 18
+         • operating_system: Linux
+         • workload: Analytics
+         • on_demand_or_reserved: On-Demand
+
+   2. Athena
+      Descripción: SQL queries on S3 data
+      Costo Estimado: $21.71
+      Configuración:
+         • query_type: Standard
+         • data_scanned_gb_per_month: 4341915
+
+   3. AWS Glue
+      Descripción: ETL and data catalog
+      Costo Estimado: $1.62
+      Configuración:
+         • dpu_hours_per_month: 3
+
+   4. S3
+      Descripción: Object storage for data lake
+      Costo Estimado: $100.00
+      Configuración:
+         • storage_class: Standard
+         • estimated_storage_gb: 500
+         • data_transfer_gb: 10
+
+   5. Lambda
+      Descripción: Serverless compute for job orchestration
+      Costo Estimado: $20.00
+      Configuración:
+         • memory_mb: 256
+         • duration_seconds: 60
+         • monthly_invocations: 1000000
+
+📋 ESTIMACIÓN 2: Databricks_nomo_eastus2_prod_001
+   Azure Resource Group: rg-nomo-eastus2-prod-001
+   Costo Azure: $37,130.47
+   Costo AWS Estimado: $27,829.95
+
+   PASOS:
+
+   1. EC2 (EMR Cluster)
+      Descripción: Spark cluster for Databricks workloads
+      Costo Estimado: $10,172.37
+      Configuración:
+         • instance_type: r5.2xlarge
+         • instance_count: 27
+         • operating_system: Linux
+         • workload: Analytics
+         • on_demand_or_reserved: On-Demand
+
+   2. Athena
+      Descripción: SQL queries on S3 data
+      Costo Estimado: $17,488.83
+      Configuración:
+         • query_type: Standard
+         • data_scanned_gb_per_month: 3497765378
+
+   3. AWS Glue
+      Descripción: ETL and data catalog
+      Costo Estimado: $48.76
+      Configuración:
+         • dpu_hours_per_month: 110
+
+   4. S3
+      Descripción: Object storage for data lake
+      Costo Estimado: $100.00
+      Configuración:
+         • storage_class: Standard
+         • estimated_storage_gb: 500
+         • data_transfer_gb: 10
+
+   5. Lambda
+      Descripción: Serverless compute for job orchestration
+      Costo Estimado: $20.00
+      Configuración:
+         • memory_mb: 256
+         • duration_seconds: 60
+         • monthly_invocations: 1000000
+
+📋 ESTIMACIÓN 3: Databricks_databricks_adbworkspaceprod001_itolunyqkjh7w
+   Azure Resource Group: databricks-rg-adbworkspaceprod001-itolunyqkjh7w
+   Costo Azure: $753.85
+   Costo AWS Estimado: $120.00
+
+   PASOS:
+
+   1. S3
+      Descripción: Object storage for data lake
+      Costo Estimado: $100.00
+      Configuración:
+         • storage_class: Standard
+         • estimated_storage_gb: 500
+         • data_transfer_gb: 10
+
+   2. Lambda
+      Descripción: Serverless compute for job orchestration
+      Costo Estimado: $20.00
+      Configuración:
+         • memory_mb: 256
+         • duration_seconds: 60
+         • monthly_invocations: 1000000
+
+📋 ESTIMACIÓN 4: Databricks_nomo_eastus2_prod_002
+   Azure Resource Group: rg-nomo-eastus2-prod-002
+   Costo Azure: $1,894.80
+   Costo AWS Estimado: $120.00
+
+   PASOS:
+
+   1. S3
+      Descripción: Object storage for data lake
+      Costo Estimado: $100.00
+      Configuración:
+         • storage_class: Standard
+         • estimated_storage_gb: 500
+         • data_transfer_gb: 10
+
+   2. Lambda
+      Descripción: Serverless compute for job orchestration
+      Costo Estimado: $20.00
+      Configuración:
+         • memory_mb: 256
+         • duration_seconds: 60
+         • monthly_invocations: 1000000
+
+📋 ESTIMACIÓN 5: Databricks_nomo_eastus2_qa_001
+   Azure Resource Group: rg-nomo-eastus2-qa-001
+   Costo Azure: $10.34
+   Costo AWS Estimado: $126.20
+
+   PASOS:
+
+   1. AWS Glue
+      Descripción: ETL and data catalog
+      Costo Estimado: $6.20
+      Configuración:
+         • dpu_hours_per_month: 14
+
+   2. S3
+      Descripción: Object storage for data lake
+      Costo Estimado: $100.00
+      Configuración:
+         • storage_class: Standard
+         • estimated_storage_gb: 500
+         • data_transfer_gb: 10
+
+   3. Lambda
+      Descripción: Serverless compute for job orchestration
+      Costo Estimado: $20.00
+      Configuración:
+         • memory_mb: 256
+         • duration_seconds: 60
+         • monthly_invocations: 1000000
+
+📋 ESTIMACIÓN 6: Databricks_databricks_adbworkspaceqa004_cu5rn7pfgeabe
+   Azure Resource Group: databricks-rg-adbworkspaceqa004-cu5rn7pfgeabe
+   Costo Azure: $6.68
+   Costo AWS Estimado: $120.00
+
+   PASOS:
+
+   1. S3
+      Descripción: Object storage for data lake
+      Costo Estimado: $100.00
+      Configuración:
+         • storage_class: Standard
+         • estimated_storage_gb: 500
+         • data_transfer_gb: 10
+
+   2. Lambda
+      Descripción: Serverless compute for job orchestration
+      Costo Estimado: $20.00
+      Configuración:
+         • memory_mb: 256
+         • duration_seconds: 60
+         • monthly_invocations: 1000000
+
+📋 ESTIMACIÓN 7: Databricks_nomom_eastus2_qa_001
+   Azure Resource Group: rg-nomom-eastus2-qa-001
+   Costo Azure: $16.52
+   Costo AWS Estimado: $120.00
+
+   PASOS:
+
+   1. S3
+      Descripción: Object storage for data lake
+      Costo Estimado: $100.00
+      Configuración:
+         • storage_class: Standard
+         • estimated_storage_gb: 500
+         • data_transfer_gb: 10
+
+   2. Lambda
+      Descripción: Serverless compute for job orchestration
+      Costo Estimado: $20.00
+      Configuración:
+         • memory_mb: 256
+         • duration_seconds: 60
+         • monthly_invocations: 1000000
+
+====================================================================================================
+TOTAL ESTIMATED SAVINGS
+====================================================================================================
+
+Azure Databricks Total: $47,990.62
+AWS Equivalent Total:   $35,223.18
+Estimated Savings:      $12,767.44 (26.6%)

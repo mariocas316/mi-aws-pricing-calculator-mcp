@@ -9,6 +9,11 @@ const EstimateBuilder = require('./lib/estimate-builder');
 const { calculateEksNodePlan } = require('./lib/eks');
 
 const estimates = new Map();
+const DEFAULT_EXPORT_STABILIZE_MS = Number(process.env.EXPORT_STABILIZE_MS || 4000);
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 const META_KEYS = new Set(['region', 'description']);
 const EC2_KEYS = new Set([
@@ -350,17 +355,228 @@ For batch mode, pass a JSON array in "services":
 server.tool(
   'export_estimate',
   'Export an estimate to calculator.aws and get a shareable URL. The link will show the full estimate with AWS-calculated pricing.',
-  { estimate_id: z.string().describe('Estimate ID from create_estimate') },
-  async ({ estimate_id }) => {
+  {
+    estimate_id: z.string().describe('Estimate ID from create_estimate'),
+    ready_wait_ms: z.number().int().min(0).optional().describe('Optional wait before returning the URL so calculator.aws finishes initial render (default: 4000). Set 0 to disable.'),
+  },
+  async ({ estimate_id, ready_wait_ms }) => {
     const estimate = estimates.get(estimate_id);
     if (!estimate) return { content: [{ type: 'text', text: `Estimate "${estimate_id}" not found.` }], isError: true };
 
     try {
       const result = await estimate.export();
-      return { content: [{ type: 'text', text: JSON.stringify({ sharable_url: result.shareableUrl, aws_estimate_id: result.estimateId }) }] };
+      const waitMs = ready_wait_ms ?? DEFAULT_EXPORT_STABILIZE_MS;
+      if (waitMs > 0) await sleep(waitMs);
+      const forceReloadUrl = `https://calculator.aws/?open=${Date.now()}#/estimate?id=${result.estimateId}`;
+      const rawEstimateUrl = `https://d3knqfixx3sbls.cloudfront.net/${result.estimateId}`;
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify({
+            sharable_url: result.shareableUrl,
+            open_url: forceReloadUrl,
+            raw_estimate_url: rawEstimateUrl,
+            aws_estimate_id: result.estimateId,
+          }),
+        }],
+      };
     } catch (err) {
       return { content: [{ type: 'text', text: `Export failed: ${err.message}` }], isError: true };
     }
+  }
+);
+
+// New Azure to AWS Migration Tools
+const fs = require('fs');
+const path = require('path');
+
+// Load Azure to AWS cost mapping
+function loadAzureAwsMapping() {
+  try {
+    const mappingFile = path.join(__dirname, 'vm-costs-azure-aws-mapping.json');
+    if (fs.existsSync(mappingFile)) {
+      return JSON.parse(fs.readFileSync(mappingFile, 'utf8'));
+    }
+  } catch (err) {
+    console.error('Error loading Azure-AWS mapping:', err.message);
+  }
+  return null;
+}
+
+server.tool(
+  'map_azure_vm_to_ec2',
+  'Map an Azure VM to its equivalent AWS EC2 instance and calculate cost comparison.',
+  {
+    azure_vm_name: z.string().describe('Name of the Azure VM'),
+    azure_size: z.string().describe('Azure VM size (e.g., Standard_D4as_v4)'),
+    vcpu: z.number().describe('Number of vCPUs'),
+    memory_gb: z.number().describe('Memory in GB'),
+  },
+  async ({ azure_vm_name, azure_size, vcpu, memory_gb }) => {
+    const instanceMap = {
+      1: 't3.small', 2: 't3.medium', 4: 't3.large',
+      8: 't3.xlarge', 16: 't3.2xlarge',
+    };
+    
+    const aws_prices = {
+      't3.small': 7.50, 't3.medium': 15.00, 't3.large': 30.00,
+      't3.xlarge': 60.00, 't3.2xlarge': 120.00,
+      'c6i.large': 50.00, 'c6i.xlarge': 100.00, 'c6i.2xlarge': 200.00,
+      'm6i.xlarge': 150.00, 'm6i.2xlarge': 300.00, 'm6i.4xlarge': 600.00,
+      'm6i.8xlarge': 1200.00, 'r6i.xlarge': 200.00, 'r6i.2xlarge': 400.00,
+    };
+    
+    let aws_equivalent = instanceMap[vcpu] || 't3.large';
+    if (memory_gb > 32) aws_equivalent = 'm6i.4xlarge';
+    else if (memory_gb > 16) aws_equivalent = 'm6i.2xlarge';
+    else if (memory_gb > 8) aws_equivalent = 'm6i.xlarge';
+    
+    const aws_monthly = aws_prices[aws_equivalent] || 75.00;
+    
+    return {
+      content: [{
+        type: 'text',
+        text: JSON.stringify({
+          azure_vm: {
+            name: azure_vm_name,
+            size: azure_size,
+            vcpu, memory_gb,
+          },
+          aws_equivalent: {
+            instance_type: aws_equivalent,
+            monthly_cost: aws_monthly,
+            annual_cost: aws_monthly * 12,
+            savings_3yr_reserved: aws_monthly * 12 * 0.50,
+          },
+        }, null, 2),
+      }],
+    };
+  }
+);
+
+server.tool(
+  'get_azure_aws_cost_comparison',
+  'Get cost comparison between Azure VMs and AWS EC2 equivalents. Returns total costs and savings analysis.',
+  {
+    environment: z.enum(['Prod', 'Dev', 'QA', 'CentralHub', 'All']).optional().describe('Filter by environment (default: All)'),
+  },
+  async ({ environment }) => {
+    const mapping = loadAzureAwsMapping();
+    if (!mapping) {
+      return {
+        content: [{
+          type: 'text',
+          text: 'Azure-AWS mapping data not available. Run extract-azure-costs.py first.',
+        }],
+        isError: true,
+      };
+    }
+    
+    let vms = mapping.vms || [];
+    if (environment && environment !== 'All') {
+      vms = vms.filter(vm => vm.name.toLowerCase().includes(environment.toLowerCase()));
+    }
+    
+    const summary = {
+      total_azure_annual: mapping.total_azure_annual,
+      total_aws_annual: mapping.total_aws_annual,
+      potential_savings: mapping.total_potential_savings,
+      savings_percentage: mapping.savings_percentage,
+      vm_count: vms.length,
+      breakdown: {
+        avg_azure_cost: (mapping.total_azure_annual / vms.length).toFixed(2),
+        avg_aws_cost: (mapping.total_aws_annual / vms.length).toFixed(2),
+      },
+    };
+    
+    return {
+      content: [{
+        type: 'text',
+        text: JSON.stringify(summary, null, 2),
+      }],
+    };
+  }
+);
+
+server.tool(
+  'create_aws_migration_estimate',
+  'Create an AWS estimate for all mapped Azure VMs by automatically adding EC2 instances.',
+  {
+    estimate_name: z.string().optional().describe('Name for the estimate'),
+    environment: z.enum(['Prod', 'Dev', 'QA', 'CentralHub', 'All']).optional().describe('Filter VMs by environment'),
+    region: z.string().optional().describe('AWS region (default: us-east-2)'),
+    pricing_strategy: z.enum(['ondemand', 'computeSavings1yrNoUpfront', 'computeSavings3yrNoUpfront']).optional().describe('Pricing strategy (default: ondemand)'),
+  },
+  async ({ estimate_name, environment, region, pricing_strategy }) => {
+    const mapping = loadAzureAwsMapping();
+    if (!mapping) {
+      return {
+        content: [{
+          type: 'text',
+          text: 'Azure-AWS mapping data not available. Run extract-azure-costs.py first.',
+        }],
+        isError: true,
+      };
+    }
+    
+    const estimate = new EstimateBuilder(estimate_name || 'Azure Migration to AWS', 'aws');
+    const awsRegion = region || 'us-east-2';
+    const strategy = pricing_strategy || 'ondemand';
+    
+    let vms = mapping.vms || [];
+    if (environment && environment !== 'All') {
+      vms = vms.filter(vm => vm.name.toLowerCase().includes(environment.toLowerCase()));
+    }
+    
+    // Group by instance type
+    const byInstance = {};
+    vms.forEach(vm => {
+      const key = vm.aws_equivalent;
+      if (!byInstance[key]) {
+        byInstance[key] = { count: 0, sampleNames: [] };
+      }
+      byInstance[key].count += 1;
+      if (byInstance[key].sampleNames.length < 3) {
+        byInstance[key].sampleNames.push(vm.name);
+      }
+    });
+    
+    // Add EC2 services for each instance type
+    Object.entries(byInstance).forEach(([instanceType, data]) => {
+      estimate.addService('ec2Enhancement', {
+        region: awsRegion,
+        description: `${data.count}x ${instanceType} (${data.sampleNames.join(', ')}...)`,
+        quantity: String(data.count),
+        instanceType,
+        selectedOS: 'linux',
+        tenancy: 'shared',
+        pricingStrategy: strategy,
+        storageType: 'Storage General Purpose gp3 GB Mo',
+        storageAmount: { value: '50', unit: 'gb|NA' },
+        snapshotFrequency: '0',
+      }, { group: 'Migration' });
+    });
+    
+    estimates.set(estimate.id, estimate);
+    
+    return {
+      content: [{
+        type: 'text',
+        text: JSON.stringify({
+          estimate_id: estimate.id,
+          name: estimate.name,
+          summary: {
+            total_vms: vms.length,
+            region: awsRegion,
+            pricing_strategy: strategy,
+            instance_distribution: byInstance,
+            estimated_monthly_cost: mapping.total_aws_annual / 12,
+            estimated_annual_cost: mapping.total_aws_annual,
+          },
+          next_step: `Call export_estimate with estimate_id "${estimate.id}" to get the calculator.aws URL.`,
+        }, null, 2),
+      }],
+    };
   }
 );
 

@@ -1,0 +1,432 @@
+{
+  "vm_standalone_count": 112,
+  "totals": {
+    "total_vcpu": 568,
+    "total_memory_gib": 1900,
+    "total_disk_gb": 91815
+  },
+  "complementary_services": {
+    "nics": 112,
+    "vnets": 6,
+    "subnets": 25,
+    "nsg_attached": 34,
+    "public_ips": 6,
+    "boot_diagnostics_enabled": 48,
+    "azure_monitor_enabled": 41
+  },
+  "by_azure_size": [
+    {
+      "azure_size": "Standard_D2as_v4",
+      "os_type": "Windows",
+      "vcpu": 2,
+      "memory_gib": 8,
+      "quantity": 11,
+      "disk_avg_gb": 292,
+      "aws_instance_type": "t3.large",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_B2as_v2",
+      "os_type": "Windows",
+      "vcpu": 2,
+      "memory_gib": 8,
+      "quantity": 9,
+      "disk_avg_gb": 327,
+      "aws_instance_type": "t3.large",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_B2s",
+      "os_type": "Linux",
+      "vcpu": 2,
+      "memory_gib": 4,
+      "quantity": 8,
+      "disk_avg_gb": 1376,
+      "aws_instance_type": "t3.medium",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "linux"
+    },
+    {
+      "azure_size": "Standard_B2s",
+      "os_type": "Windows",
+      "vcpu": 2,
+      "memory_gib": 4,
+      "quantity": 8,
+      "disk_avg_gb": 2260,
+      "aws_instance_type": "t3.medium",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_DS4_v2",
+      "os_type": "Linux",
+      "vcpu": 8,
+      "memory_gib": 28,
+      "quantity": 8,
+      "disk_avg_gb": 300,
+      "aws_instance_type": "m6i.2xlarge",
+      "aws_exact_cpu_mem_match": false,
+      "aws_selected_os": "linux"
+    },
+    {
+      "azure_size": "Standard_B2ms",
+      "os_type": "Linux",
+      "vcpu": 2,
+      "memory_gib": 8,
+      "quantity": 7,
+      "disk_avg_gb": 202,
+      "aws_instance_type": "t3.large",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "linux"
+    },
+    {
+      "azure_size": "Standard_F8s_v2",
+      "os_type": "Windows",
+      "vcpu": 8,
+      "memory_gib": 16,
+      "quantity": 6,
+      "disk_avg_gb": 725,
+      "aws_instance_type": "c6i.2xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_B2ms",
+      "os_type": "Windows",
+      "vcpu": 2,
+      "memory_gib": 8,
+      "quantity": 5,
+      "disk_avg_gb": 1792,
+      "aws_instance_type": "t3.large",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_B4ms",
+      "os_type": "Linux",
+      "vcpu": 4,
+      "memory_gib": 16,
+      "quantity": 5,
+      "disk_avg_gb": 269,
+      "aws_instance_type": "m6i.xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "linux"
+    },
+    {
+      "azure_size": "Standard_B4ms",
+      "os_type": "Windows",
+      "vcpu": 4,
+      "memory_gib": 16,
+      "quantity": 5,
+      "disk_avg_gb": 108,
+      "aws_instance_type": "m6i.xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_B4as_v2",
+      "os_type": "Windows",
+      "vcpu": 4,
+      "memory_gib": 16,
+      "quantity": 4,
+      "disk_avg_gb": 388,
+      "aws_instance_type": "m6i.xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_B2als_v2",
+      "os_type": "Windows",
+      "vcpu": 2,
+      "memory_gib": 4,
+      "quantity": 3,
+      "disk_avg_gb": 53,
+      "aws_instance_type": "t3.medium",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_D4as_v4",
+      "os_type": "Windows",
+      "vcpu": 4,
+      "memory_gib": 16,
+      "quantity": 3,
+      "disk_avg_gb": 394,
+      "aws_instance_type": "m6i.xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_B16ms",
+      "os_type": "Windows",
+      "vcpu": 16,
+      "memory_gib": 64,
+      "quantity": 2,
+      "disk_avg_gb": 154,
+      "aws_instance_type": "m6i.4xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_D2as_v4",
+      "os_type": "Linux",
+      "vcpu": 2,
+      "memory_gib": 8,
+      "quantity": 2,
+      "disk_avg_gb": 48,
+      "aws_instance_type": "t3.large",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "linux"
+    },
+    {
+      "azure_size": "Standard_D8as_v4",
+      "os_type": "Windows",
+      "vcpu": 8,
+      "memory_gib": 32,
+      "quantity": 2,
+      "disk_avg_gb": 4160,
+      "aws_instance_type": "m6i.2xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_DS5_v2",
+      "os_type": "Linux",
+      "vcpu": 16,
+      "memory_gib": 56,
+      "quantity": 2,
+      "disk_avg_gb": 272,
+      "aws_instance_type": "m6i.4xlarge",
+      "aws_exact_cpu_mem_match": false,
+      "aws_selected_os": "linux"
+    },
+    {
+      "azure_size": "Standard_F2s",
+      "os_type": "Linux",
+      "vcpu": 2,
+      "memory_gib": 4,
+      "quantity": 2,
+      "disk_avg_gb": 32,
+      "aws_instance_type": "t3.medium",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "linux"
+    },
+    {
+      "azure_size": "Standard_F32s_v2",
+      "os_type": "Windows",
+      "vcpu": 32,
+      "memory_gib": 64,
+      "quantity": 2,
+      "disk_avg_gb": 520,
+      "aws_instance_type": "c6i.8xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_B8als_v2",
+      "os_type": "Windows",
+      "vcpu": 8,
+      "memory_gib": 16,
+      "quantity": 1,
+      "disk_avg_gb": 48,
+      "aws_instance_type": "c6i.2xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_B8as_v2",
+      "os_type": "Windows",
+      "vcpu": 8,
+      "memory_gib": 32,
+      "quantity": 1,
+      "disk_avg_gb": 1024,
+      "aws_instance_type": "m6i.2xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_B8ms",
+      "os_type": "Linux",
+      "vcpu": 8,
+      "memory_gib": 32,
+      "quantity": 1,
+      "disk_avg_gb": 64,
+      "aws_instance_type": "m6i.2xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "linux"
+    },
+    {
+      "azure_size": "Standard_B8ms",
+      "os_type": "Windows",
+      "vcpu": 8,
+      "memory_gib": 32,
+      "quantity": 1,
+      "disk_avg_gb": 127,
+      "aws_instance_type": "m6i.2xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_D2a_v4",
+      "os_type": "Windows",
+      "vcpu": 2,
+      "memory_gib": 8,
+      "quantity": 1,
+      "disk_avg_gb": 32,
+      "aws_instance_type": "t3.large",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_D32as_v6",
+      "os_type": "Linux",
+      "vcpu": 32,
+      "memory_gib": 128,
+      "quantity": 1,
+      "disk_avg_gb": 16384,
+      "aws_instance_type": "m6i.8xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "linux"
+    },
+    {
+      "azure_size": "Standard_D4_v4",
+      "os_type": "Windows",
+      "vcpu": 4,
+      "memory_gib": 16,
+      "quantity": 1,
+      "disk_avg_gb": 212,
+      "aws_instance_type": "m6i.xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_D4as_v5",
+      "os_type": "Linux",
+      "vcpu": 4,
+      "memory_gib": 16,
+      "quantity": 1,
+      "disk_avg_gb": 128,
+      "aws_instance_type": "m6i.xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "linux"
+    },
+    {
+      "azure_size": "Standard_D4d_v4",
+      "os_type": "Linux",
+      "vcpu": 4,
+      "memory_gib": 16,
+      "quantity": 1,
+      "disk_avg_gb": 64,
+      "aws_instance_type": "m6i.xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "linux"
+    },
+    {
+      "azure_size": "Standard_D8_v4",
+      "os_type": "Windows",
+      "vcpu": 8,
+      "memory_gib": 32,
+      "quantity": 1,
+      "disk_avg_gb": 544,
+      "aws_instance_type": "m6i.2xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_D8ads_v5",
+      "os_type": "Windows",
+      "vcpu": 8,
+      "memory_gib": 32,
+      "quantity": 1,
+      "disk_avg_gb": 1151,
+      "aws_instance_type": "m6i.2xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_D8as_v4",
+      "os_type": "Linux",
+      "vcpu": 8,
+      "memory_gib": 32,
+      "quantity": 1,
+      "disk_avg_gb": 1000,
+      "aws_instance_type": "m6i.2xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "linux"
+    },
+    {
+      "azure_size": "Standard_D8s_v3",
+      "os_type": "Windows",
+      "vcpu": 8,
+      "memory_gib": 32,
+      "quantity": 1,
+      "disk_avg_gb": 2000,
+      "aws_instance_type": "m6i.2xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_DC4ds_v3",
+      "os_type": "Windows",
+      "vcpu": 4,
+      "memory_gib": 32,
+      "quantity": 1,
+      "disk_avg_gb": 127,
+      "aws_instance_type": "r6i.xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "windows"
+    },
+    {
+      "azure_size": "Standard_E2as_v4",
+      "os_type": "Linux",
+      "vcpu": 2,
+      "memory_gib": 16,
+      "quantity": 1,
+      "disk_avg_gb": 1024,
+      "aws_instance_type": "r6i.large",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "linux"
+    },
+    {
+      "azure_size": "Standard_F2s_v2",
+      "os_type": "Linux",
+      "vcpu": 2,
+      "memory_gib": 4,
+      "quantity": 1,
+      "disk_avg_gb": 32,
+      "aws_instance_type": "t3.medium",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "linux"
+    },
+    {
+      "azure_size": "Standard_F8s_v2",
+      "os_type": "Linux",
+      "vcpu": 8,
+      "memory_gib": 16,
+      "quantity": 1,
+      "disk_avg_gb": 210,
+      "aws_instance_type": "c6i.2xlarge",
+      "aws_exact_cpu_mem_match": true,
+      "aws_selected_os": "linux"
+    },
+    {
+      "azure_size": "Standard_NV8as_v4",
+      "os_type": "Windows",
+      "vcpu": 8,
+      "memory_gib": 28,
+      "quantity": 1,
+      "disk_avg_gb": 127,
+      "aws_instance_type": "m6i.2xlarge",
+      "aws_exact_cpu_mem_match": false,
+      "aws_selected_os": "windows"
+    }
+  ],
+  "tco_reference": {
+    "service": "VMs Standalone (112 VMs: ArcGIS, Blue Planet, Kafka, ServiceNow, PBI GW, DCs)",
+    "aws_ondemand_monthly": 8000.0,
+    "aws_sp1yr_monthly": 6400.0,
+    "aws_sp3yr_monthly": 5100.0
+  }
+}

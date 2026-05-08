@@ -57,6 +57,9 @@ Agrega esto en la configuracion de tu cliente MCP (por ejemplo, `~/.kiro/setting
 | `create_eks_estimate` | Crea una estimacion EKS lista para exportar, dimensionada para cargas con contenedores (por ejemplo 100 contenedores), incluyendo sizing de workers EC2. |
 | `add_service` | Agrega uno o mas servicios a una estimacion con valores de configuracion. Soporta modo batch. |
 | `export_estimate` | Exporta una estimacion a calculator.aws y devuelve una URL compartible. |
+| `map_azure_vm_to_ec2` | Mapea una VM de Azure a un tipo EC2 equivalente y retorna comparativa de costos por VM. |
+| `get_azure_aws_cost_comparison` | Devuelve resumen de costos Azure vs AWS (totales, ahorros y porcentaje) con filtro opcional por ambiente. |
+| `create_aws_migration_estimate` | Crea un estimate de migracion desde el mapeo Azure->AWS agregando instancias EC2 automaticamente. |
 
 ### Ejemplo Rapido: EKS para 100 Contenedores
 
@@ -168,6 +171,21 @@ Cuando se llama `export_estimate`, el constructor:
 5. Devuelve la URL compartible de `calculator.aws`
 
 AWS recalcula los costos reales cuando alguien abre el enlace.
+
+## Actualizaciones Recientes (Mayo 2026)
+
+- Se completo una estimacion de referencia para Joomla en produccion (1000 usuarios) con arquitectura HA y variante de RDS Single-AZ.
+- Se valido flujo end-to-end con MCP: `create_estimate` -> `add_service` -> `export_estimate` para casos Joomla y migracion.
+- Se ejecutaron cargas masivas de VMs standalone hacia AWS Pricing Calculator desde JSON de entrada por VM.
+- Se generaron y validaron resultados de carga en archivos de salida para consumo operativo.
+
+Archivos relevantes generados/actualizados en este flujo:
+
+- `generate_joomla_calculator.py`
+- `joomla_calculator_config.json`
+- `joomla_calculator_analysis.json`
+- `create-vm-ondemand-detailed-estimate.js`
+- `vm-ondemand-detailed-result.json`
 
 ## Variables de Entorno
 

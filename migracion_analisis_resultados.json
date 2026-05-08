@@ -1,0 +1,98 @@
+{
+  "timestamp": "2026-05-07T16:28:31.176807",
+  "azure_current": {
+    "premium_serverless_sql": 24984.0,
+    "premium_all_purpose_photon": 14481.0,
+    "premium_all_purpose_compute": 5284.0,
+    "otros": 3240.62,
+    "total": 47990.62
+  },
+  "analysis": {
+    "azure_actual": {
+      "premium_serverless_sql": 24984.0,
+      "premium_all_purpose_photon": 14481.0,
+      "premium_all_purpose_compute": 5284.0,
+      "otros": 3240.62,
+      "total": 47990.62
+    },
+    "option_1": {
+      "name": "Databricks on AWS (1:1)",
+      "components": {
+        "databricks_dbus": 47990.62,
+        "ec2_instances": 16188.480000000001,
+        "s3_storage": 11.5,
+        "networking": 65.7,
+        "cloudwatch": 30.0
+      },
+      "monthly_total": 64286.3,
+      "annual_total": 771435.6000000001,
+      "vs_azure_monthly": 16295.68,
+      "vs_azure_percent": 33.95596889558835
+    },
+    "option_2": {
+      "name": "EMR + Athena + Glue (Hybrid)",
+      "components": {
+        "athena_sql": 21319.68,
+        "emr_ec2": 14716.8,
+        "emr_fee": 4380.0,
+        "glue_etl": 44.0,
+        "s3_storage": 11.5,
+        "nat_gateway": 65.7,
+        "vpc_endpoints": 29.2,
+        "cloudwatch": 50.0,
+        "kms": 5.0
+      },
+      "monthly_total": 40621.88,
+      "annual_total": 487462.55999999994,
+      "vs_azure_monthly": -7368.740000000005,
+      "vs_azure_percent": -15.354542200121617
+    },
+    "option_3": {
+      "name": "Amazon Redshift",
+      "components": {
+        "redshift_nodes": 9329.4,
+        "managed_storage": 11.9,
+        "data_sharing": 50.0,
+        "networking": 50.0
+      },
+      "monthly_total": 9441.3,
+      "annual_total": 113295.59999999999,
+      "vs_azure_monthly": -38549.32000000001,
+      "vs_azure_percent": -80.3267805250276
+    },
+    "option_4": {
+      "name": "AWS Glue + Lambda",
+      "components": {
+        "glue_etl": 4400.0,
+        "lambda_compute": 256000.51200000002,
+        "lambda_requests": 0.19999999999999998,
+        "s3_storage": 11.5,
+        "networking": 30.0
+      },
+      "monthly_total": 260442.21200000003,
+      "annual_total": 3125306.544,
+      "vs_azure_monthly": 212451.59200000003,
+      "vs_azure_percent": 442.69399311782183
+    },
+    "option_5": {
+      "name": "Apache Spark on EMR",
+      "components": {
+        "emr_ec2": 11037.6,
+        "emr_fee": 3285.0,
+        "s3_storage": 11.5,
+        "networking": 62.85,
+        "monitoring": 50.0
+      },
+      "monthly_total": 14446.95,
+      "annual_total": 173363.40000000002,
+      "vs_azure_monthly": -33543.67,
+      "vs_azure_percent": -69.89630473621719
+    }
+  },
+  "recommendation": {
+    "option": "Option 2: EMR + Athena + Glue",
+    "monthly_savings": 7368.740000000005,
+    "annual_savings": 88424.88000000006,
+    "savings_percent": 40.3
+  }
+}

@@ -1,0 +1,287 @@
+{
+  "region": "us-east-2",
+  "estimate_name": "VMs Standalone Azure to AWS On-Demand",
+  "target_monthly_from_tco": 8000.0,
+  "ec2_groups": [
+    {
+      "aws_instance_type": "t3.large",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 292,
+      "quantity": 11,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "t3.large",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 327,
+      "quantity": 9,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "m6i.2xlarge",
+      "aws_selected_os": "linux",
+      "disk_avg_gb": 300,
+      "quantity": 8,
+      "source_rows": 1,
+      "exact_matches": 0
+    },
+    {
+      "aws_instance_type": "t3.medium",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 2260,
+      "quantity": 8,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "t3.medium",
+      "aws_selected_os": "linux",
+      "disk_avg_gb": 1376,
+      "quantity": 8,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "t3.large",
+      "aws_selected_os": "linux",
+      "disk_avg_gb": 202,
+      "quantity": 7,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "c6i.2xlarge",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 725,
+      "quantity": 6,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "t3.large",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 1792,
+      "quantity": 5,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "m6i.xlarge",
+      "aws_selected_os": "linux",
+      "disk_avg_gb": 269,
+      "quantity": 5,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "m6i.xlarge",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 108,
+      "quantity": 5,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "m6i.xlarge",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 388,
+      "quantity": 4,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "t3.medium",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 53,
+      "quantity": 3,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "m6i.xlarge",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 394,
+      "quantity": 3,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "t3.medium",
+      "aws_selected_os": "linux",
+      "disk_avg_gb": 32,
+      "quantity": 3,
+      "source_rows": 2,
+      "exact_matches": 2
+    },
+    {
+      "aws_instance_type": "m6i.2xlarge",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 4160,
+      "quantity": 2,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "m6i.4xlarge",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 154,
+      "quantity": 2,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "m6i.4xlarge",
+      "aws_selected_os": "linux",
+      "disk_avg_gb": 272,
+      "quantity": 2,
+      "source_rows": 1,
+      "exact_matches": 0
+    },
+    {
+      "aws_instance_type": "m6i.2xlarge",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 127,
+      "quantity": 2,
+      "source_rows": 2,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "c6i.8xlarge",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 520,
+      "quantity": 2,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "t3.large",
+      "aws_selected_os": "linux",
+      "disk_avg_gb": 48,
+      "quantity": 2,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "c6i.2xlarge",
+      "aws_selected_os": "linux",
+      "disk_avg_gb": 210,
+      "quantity": 1,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "c6i.2xlarge",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 48,
+      "quantity": 1,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "m6i.xlarge",
+      "aws_selected_os": "linux",
+      "disk_avg_gb": 128,
+      "quantity": 1,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "m6i.2xlarge",
+      "aws_selected_os": "linux",
+      "disk_avg_gb": 1000,
+      "quantity": 1,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "m6i.2xlarge",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 544,
+      "quantity": 1,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "m6i.2xlarge",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 1024,
+      "quantity": 1,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "m6i.2xlarge",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 1151,
+      "quantity": 1,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "m6i.2xlarge",
+      "aws_selected_os": "linux",
+      "disk_avg_gb": 64,
+      "quantity": 1,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "m6i.xlarge",
+      "aws_selected_os": "linux",
+      "disk_avg_gb": 64,
+      "quantity": 1,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "m6i.8xlarge",
+      "aws_selected_os": "linux",
+      "disk_avg_gb": 16384,
+      "quantity": 1,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "m6i.2xlarge",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 2000,
+      "quantity": 1,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "r6i.large",
+      "aws_selected_os": "linux",
+      "disk_avg_gb": 1024,
+      "quantity": 1,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "r6i.xlarge",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 127,
+      "quantity": 1,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "m6i.xlarge",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 212,
+      "quantity": 1,
+      "source_rows": 1,
+      "exact_matches": 1
+    },
+    {
+      "aws_instance_type": "t3.large",
+      "aws_selected_os": "windows",
+      "disk_avg_gb": 32,
+      "quantity": 1,
+      "source_rows": 1,
+      "exact_matches": 1
+    }
+  ]
+}

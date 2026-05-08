@@ -1,0 +1,9 @@
+{
+  "estimateId": "8a21c293f126fd109b679296886f20e5a568ec19",
+  "url": "https://calculator.aws/#/estimate?id=8a21c293f126fd109b679296886f20e5a568ec19",
+  "targetMonthlyFromTco": 8000,
+  "vmCount": 112,
+  "diskGbTotalApprox": 91815,
+  "ec2GroupCount": 35,
+  "region": "us-east-2"
+}
